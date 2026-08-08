@@ -26,6 +26,7 @@ import { SportsSection } from "@/components/site/sports-section";
 import { TrustSection } from "@/components/site/trust-section";
 import { WhyAntera } from "@/components/site/why-antera";
 import { WhyPlots } from "@/components/site/why-plots";
+import { FloatingWhatsApp } from "@/components/site/floating-whatsapp";
 
 const TITLE = "Antera Realty - Premium Villa Plots in Hyderabad";
 const DESCRIPTION =
@@ -74,6 +75,7 @@ function Index() {
       <FinalCta />
       <ContactSection />
       <SiteFooter />
+      <FloatingWhatsApp />
     </main>
   );
 }

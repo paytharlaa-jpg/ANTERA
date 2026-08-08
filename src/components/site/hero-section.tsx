@@ -104,8 +104,8 @@ export function HeroSection() {
         </motion.div>
 
         <h1 className="hero-title mt-7 text-foreground">
-          {["Find", "Your", "Dream", "Home"].map((word, i) => (
-            <span key={word} className="inline-block overflow-hidden align-bottom">
+          {["Own", "the", "Ground.", "Build", "the", "Future."].map((word, i) => (
+            <span key={`${word}-${i}`} className="inline-block overflow-hidden align-bottom">
               <motion.span
                 className="word-gap inline-block"
                 initial={{ y: "110%" }}
@@ -124,8 +124,7 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.75 }}
           className="mt-5 max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base"
         >
-          Explore thoughtfully designed homes in premium locations, crafted to match modern
-          lifestyles with comfort, elegance, and long-term value.
+          Premium open plots designed for those who see land as more than property... it’s the beginning of something bigger.
         </motion.p>
 
         <motion.div
@@ -146,6 +145,12 @@ export function HeroSection() {
             className="glass-panel inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-xs font-semibold uppercase tracking-widest text-foreground transition-transform duration-300 hover:scale-105"
           >
             Book a Visit
+          </a>
+          <a
+            href="tel:+919959751331"
+            className="glass-panel inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-xs font-semibold uppercase tracking-widest text-foreground transition-transform duration-300 hover:scale-105 bg-accent text-accent-foreground"
+          >
+            Call +91 99597 51331
           </a>
         </motion.div>
       </motion.div>
