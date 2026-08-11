@@ -147,10 +147,10 @@ export function HeroSection() {
             Book a Visit
           </a>
           <a
-            href="tel:+919959751331"
+            href="tel:+919985358899"
             className="glass-panel inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-xs font-semibold uppercase tracking-widest text-foreground transition-transform duration-300 hover:scale-105 bg-accent text-accent-foreground"
           >
-            Call +91 99597 51331
+            Call Now
           </a>
         </motion.div>
       </motion.div>

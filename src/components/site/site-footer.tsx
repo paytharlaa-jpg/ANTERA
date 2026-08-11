@@ -37,9 +37,10 @@ export function SiteFooter() {
               </span>
             </span>
           </div>
+          <p className="text-sm font-semibold text-primary-foreground/90">{BRAND.contactName}</p>
           <p className="text-sm text-primary-foreground/60">{BRAND.location}</p>
-          <a href={`tel:${BRAND.phoneRaw}`} className="text-sm text-primary-foreground/80 hover:text-accent">
-            {BRAND.phone}
+          <a href={`tel:${BRAND.phoneRaw}`} className="text-sm font-bold text-accent hover:text-white">
+            Call Now
           </a>
         </div>
 

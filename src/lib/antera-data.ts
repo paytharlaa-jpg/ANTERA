@@ -4,11 +4,12 @@ export const BRAND = {
   name: "Antera Realty",
   wordmark: "ANTERA",
   tagline: "Shaping Spaces, Building Futures",
-  phone: "+91 99597 51331",
-  phoneRaw: "+919959751331",
-  whatsapp: "919959751331",
+  contactName: "Nagunuri Raju",
+  phone: "Call Now",
+  phoneRaw: "+919985358899",
+  whatsapp: "919985358899",
   email: "hello@anterarealty.com",
-  location: "Hyderabad, Telangana",
+  location: "Opp. Mangalya Shopping Mall, Vanasthalipuram, Hyderabad.",
   heroStrip:
     "Srisailam Highway \u00b7 Future City Corridor \u00b7 Karkalpahad \u00b7 Strategic Land Investments \u00b7 Premium Villa Plots",
 } as const;
