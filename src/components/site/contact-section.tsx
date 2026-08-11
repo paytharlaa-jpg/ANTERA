@@ -16,7 +16,7 @@ const OPTIONS = [
     value: "Chat with an advisor",
     href: `https://wa.me/${BRAND.whatsapp}`,
   },
-  { icon: CalendarCheck, label: "Schedule Site Visit", value: "Pick a date", href: "#site-visit" },
+  { icon: CalendarCheck, label: "Schedule Site Visit", value: "Pick a date", href: "tel:+919985358899" },
   {
     icon: FileDown,
     label: "Request Project Brochure",

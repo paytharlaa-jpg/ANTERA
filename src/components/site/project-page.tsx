@@ -59,7 +59,7 @@ export function ProjectPage({ slug }: { slug: ProjectSlug }) {
             </span>
           </div>
           <div className="mt-4 flex flex-wrap gap-3">
-            <CtaLink href="#site-visit" variant="accent" arrow>
+            <CtaLink href="tel:+919985358899" variant="accent" arrow>
               Book a Site Visit
             </CtaLink>
             <CtaLink href={project.brochure} variant="ghost-dark" download>
@@ -160,7 +160,7 @@ export function ProjectPage({ slug }: { slug: ProjectSlug }) {
               change. Reference pricing for Avatar 2 phases is {PRICING[0].price} and{" "}
               {PRICING[1].price} per sq. yard.
             </p>
-            <CtaLink href="#site-visit" variant="accent" className="w-fit">
+            <CtaLink href="tel:+919985358899" variant="accent" className="w-fit">
               Check Availability
             </CtaLink>
           </div>

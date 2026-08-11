@@ -22,7 +22,7 @@ export const NAV_LINKS = [
   { label: "Locations", href: "/#location" },
   { label: "Gallery", href: "/#gallery" },
   { label: "FAQs", href: "/#faqs" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Contact", href: "tel:+919985358899" },
 ] as const;
 
 export const WHY_ANTERA = [

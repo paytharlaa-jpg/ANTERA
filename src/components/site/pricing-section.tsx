@@ -35,7 +35,7 @@ export function PricingSection() {
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{tier.copy}</p>
               </div>
               <CtaLink
-                href="#site-visit"
+                href="tel:+919985358899"
                 variant={i === 0 ? "accent" : "navy"}
                 className="mt-auto w-fit"
               >

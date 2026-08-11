@@ -11,8 +11,8 @@ const EXPLORE = [
   { label: "Marvel Smart City", href: "/projects/marvel-smart-city" },
   { label: "Magnus Smart City", href: "/projects/magnus-smart-city" },
   { label: "Locations", href: "/#location" },
-  { label: "Site Visit", href: "/#site-visit" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Site Visit", href: "tel:+919985358899" },
+  { label: "Contact", href: "tel:+919985358899" },
 ];
 
 const BROCHURES = [

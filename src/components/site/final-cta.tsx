@@ -47,7 +47,7 @@ export function FinalCta() {
             <CtaLink href="#projects" variant="accent">
               Explore Projects
             </CtaLink>
-            <CtaLink href="#site-visit" variant="ghost-dark" arrow>
+            <CtaLink href="tel:+919985358899" variant="ghost-dark" arrow>
               Book a Site Visit
             </CtaLink>
           </div>

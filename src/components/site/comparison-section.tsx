@@ -56,7 +56,7 @@ export function ComparisonSection() {
 
       <div className="mt-12 flex flex-col items-start gap-5 rounded-3xl bg-primary p-8 text-primary-foreground sm:flex-row sm:items-center sm:justify-between sm:p-10">
         <h3 className="display-title text-2xl">Not Sure Which Project Fits You?</h3>
-        <CtaLink href="#contact" variant="accent" arrow>
+        <CtaLink href="tel:+919985358899" variant="accent" arrow>
           Talk to Our Property Advisor
         </CtaLink>
       </div>

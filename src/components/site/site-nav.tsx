@@ -52,7 +52,7 @@ export function SiteNav() {
 
         <div className="flex items-center gap-2">
           <a
-            href="#site-visit"
+            href="tel:+919985358899"
             className="hidden rounded-full bg-accent px-5 py-2.5 text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-accent-foreground transition-transform duration-300 hover:scale-105 md:inline-flex"
           >
             Book a Site Visit &rarr;
@@ -85,7 +85,7 @@ export function SiteNav() {
             </a>
           ))}
           <a
-            href="#site-visit"
+            href="tel:+919985358899"
             onClick={() => setOpen(false)}
             className="mt-1 rounded-xl bg-accent px-3 py-3 text-center text-sm font-semibold text-accent-foreground"
           >

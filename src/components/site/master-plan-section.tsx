@@ -41,13 +41,13 @@ export function MasterPlanSection() {
               >
                 View Master Plan
               </button>
-              <CtaLink href="#site-visit" variant="navy">
+              <CtaLink href="tel:+919985358899" variant="navy">
                 Check Available Plots
               </CtaLink>
               <CtaLink href={ASSETS.masterPlan} variant="outline" download>
                 Download Layout
               </CtaLink>
-              <CtaLink href="#contact" variant="outline">
+              <CtaLink href="tel:+919985358899" variant="outline">
                 Talk to an Advisor
               </CtaLink>
             </div>
