@@ -30,7 +30,7 @@ export const Route = createFileRoute("/blog/$slug")({
 
     return {
       meta: [
-        { title: \`\${post.title} | Antera Realty\` },
+        { title: post.title + " | Antera Realty" },
         { name: "description", content: post.meta },
         { property: "og:title", content: post.title },
         { property: "og:description", content: post.meta },
