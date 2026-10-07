@@ -18,6 +18,7 @@ export const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/#about" },
   { label: "Projects", href: "/#projects" },
+  { label: "Blog", href: "/blog" },
   { label: "Why Antera", href: "/#why-antera" },
   { label: "Locations", href: "/#location" },
   { label: "Gallery", href: "/#gallery" },

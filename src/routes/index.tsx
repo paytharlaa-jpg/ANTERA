@@ -28,9 +28,9 @@ import { WhyAntera } from "@/components/site/why-antera";
 import { WhyPlots } from "@/components/site/why-plots";
 import { FloatingWhatsApp } from "@/components/site/floating-whatsapp";
 
-const TITLE = "Antera Realty - Premium Villa Plots in Hyderabad";
+const TITLE = "Open Plots on Srisailam Highway, Hyderabad | Antera Realty";
 const DESCRIPTION =
-  "Antera Realty showcases strategically located plotted developments on the Srisailam Highway and Future City corridor - Avatar 2, Marvel Smart City and Magnus Smart City.";
+  "Discover premium open plots and luxury villa communities on Srisailam Highway, Hyderabad. Explore approved projects like Avatar 2 starting at ₹15,500/sq.yd.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -40,8 +40,12 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://anterarealty.com/" }, // Missing OG URL as requested in playbook
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [
+      { rel: "canonical", href: "https://anterarealty.com/" } // Added canonical tag as requested
+    ]
   }),
   component: Index,
 });

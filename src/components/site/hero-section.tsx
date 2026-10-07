@@ -1,220 +1,181 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
-import { useRef } from "react";
+import { motion } from "motion/react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
 
 import { ASSETS } from "@/lib/assets";
+import openPlotImg from "@/assets/open-plot.jpg";
+
+const GALLERY = [
+  { 
+    id: 1, 
+    title: "Premium Plots", 
+    subtitle: "Blank canvases for visionaries.",
+    img: openPlotImg 
+  },
+  { 
+    id: 2, 
+    title: "Magnus Estates", 
+    subtitle: "Modern luxury defined.",
+    img: ASSETS.houses.modern 
+  },
+  { 
+    id: 3, 
+    title: "Glass Collection", 
+    subtitle: "Seamless indoor-outdoor living.",
+    img: ASSETS.houses.glass 
+  },
+  { 
+    id: 4, 
+    title: "Waterfront City", 
+    subtitle: "Serenity by the water.",
+    img: ASSETS.houses.water 
+  },
+];
 
 export function HeroSection() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  // Smoothed progress -> cinematic, never twitchy
-  const p = useSpring(scrollYProgress, { stiffness: 90, damping: 26, mass: 0.4 });
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Sky / atmosphere parallax (slowest layer)
-  const skyY = useTransform(p, [0, 1], ["0%", "10%"]);
-  const skyScale = useTransform(p, [0, 1], [1.06, 1.18]);
-
-  // Villa: distant at the bottom 25-30%, then dollies in toward the viewer
-  const villaY = useTransform(p, [0, 0.55, 1], ["30%", "2%", "-12%"]);
-  const villaScale = useTransform(p, [0, 0.55, 1], [0.58, 1.05, 1.5]);
-  const villaBlur = useTransform(p, [0.75, 1], ["blur(0px)", "blur(6px)"]);
-  const villaOpacity = useTransform(p, [0, 0.85, 1], [1, 1, 0.55]);
-
-  // Headline stays readable through the early scroll, then lifts away
-  const copyY = useTransform(p, [0, 0.6], ["0%", "-46%"]);
-  const copyOpacity = useTransform(p, [0, 0.28, 0.55], [1, 1, 0]);
-
-  // Mid cloud bands (medium parallax, kept subtle)
-  const midCloudY = useTransform(p, [0, 1], ["0%", "-14%"]);
-
-  // Bottom cloud bank: stays below the fold, only rises for the final hand-off
-  const frontCloudY = useTransform(
-    p,
-    [0, 0.4, 0.7, 0.88, 1],
-    ["115%", "105%", "78%", "48%", "-6%"],
-  );
-  const frontCloudScale = useTransform(p, [0, 0.88, 1], [1.05, 1.15, 1.5]);
-  const frontCloudOpacity = useTransform(p, [0, 0.4, 0.7, 0.88, 1], [0.15, 0.2, 0.3, 0.35, 1]);
-  const backCloudY = useTransform(p, [0, 0.7, 1], ["120%", "92%", "40%"]);
-  const backCloudOpacity = useTransform(p, [0, 0.7, 1], [0.12, 0.2, 0.45]);
-  const veilOpacity = useTransform(p, [0.9, 1], [0, 1]);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    // Initial check with a slight delay to ensure client-side hydration match
+    setTimeout(checkMobile, 10);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   return (
     <section
       id="top"
-      ref={ref}
-      className="hero-shell relative w-full bg-sky-soft"
-      aria-label="Antera Realty introduction"
+      className="relative flex min-h-[100dvh] w-full flex-col items-center justify-between bg-[#EFECE6] pb-8 pt-24 sm:px-8 md:pt-32"
     >
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-      {/* Sky layer */}
-      <motion.div style={{ y: skyY, scale: skyScale }} className="absolute inset-0">
-        <img src={ASSETS.sky} alt="" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/25 via-transparent to-background" />
-      </motion.div>
+      {/* 1. Top Header Area */}
+      <div className="flex w-full max-w-7xl flex-col items-center justify-between gap-6 px-4 md:flex-row md:items-end md:gap-8 md:px-0">
+        <div className="flex w-full flex-col items-center text-center md:items-start md:text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-4 flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-black/50 md:text-sm"
+          >
+            <Sparkles className="h-4 w-4 text-orange-500" />
+            <span>The Antera Standard</span>
+          </motion.div>
+          
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="font-display text-5xl font-bold leading-[1.1] tracking-tighter text-black sm:text-6xl md:text-7xl lg:text-8xl"
+          >
+            Curated <br className="hidden md:block" />
+            <span className="italic text-black/40">Excellence.</span>
+          </motion.h1>
+        </div>
 
-      {/* Drifting cloud bands */}
-      <motion.div style={{ y: midCloudY }} className="pointer-events-none absolute inset-0 z-[5] opacity-60">
-      <div className="absolute inset-x-0" style={{ top: "10vh" }}>
-        <img
-          src={ASSETS.cloudStrip}
-          alt=""
-          loading="lazy"
-          className="animate-cloud-drift max-w-none"
-          style={{ ["--drift-duration" as string]: "38s", width: "150%", marginLeft: "-25%" }}
-        />
-      </div>
-      <div className="absolute inset-x-0 opacity-45" style={{ top: "58vh" }}>
-        <img
-          src={ASSETS.cloudStrip}
-          alt=""
-          loading="lazy"
-          className="animate-cloud-drift max-w-none -scale-x-100"
-          style={{ ["--drift-duration" as string]: "52s", width: "180%", marginLeft: "-40%" }}
-        />
-      </div>
-      </motion.div>
-
-      {/* Copy */}
-      <motion.div
-        style={{ y: copyY, opacity: copyOpacity }}
-        className="relative z-20 mx-auto flex max-w-5xl flex-col items-center px-6 pt-28 text-center sm:pt-32"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.25 }}
-          className="glass-panel flex items-center gap-3 rounded-full py-1.5 pl-1.5 pr-4"
+        <motion.div 
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="flex w-full flex-col items-center gap-6 md:w-auto md:items-end"
         >
-          <div className="flex -space-x-2">
-            {ASSETS.people.slice(0, 3).map((src) => (
-              <img
-                key={src}
-                src={src}
-                alt=""
-                className="h-7 w-7 rounded-full border-2 border-white object-cover"
-              />
-            ))}
-          </div>
-          <span className="text-xs font-semibold tracking-wide text-foreground/80">
-            3,500+ happy families
-          </span>
-        </motion.div>
-
-        <h1 className="hero-title mt-7 text-foreground">
-          {["Own", "the", "Ground.", "Build", "the", "Future."].map((word, i) => (
-            <span key={`${word}-${i}`} className="inline-block overflow-hidden align-bottom">
-              <motion.span
-                className="word-gap inline-block"
-                initial={{ y: "110%" }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.9, delay: 0.3 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}
-              >
-                {word}
-              </motion.span>
-            </span>
-          ))}
-        </h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.75 }}
-          className="mt-5 max-w-xl text-sm leading-relaxed text-foreground/70 sm:text-base"
-        >
-          Premium open plots designed for those who see land as more than property... it’s the beginning of something bigger.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-3"
-        >
+          <p className="max-w-[280px] text-center text-sm leading-relaxed text-black/60 md:max-w-xs md:text-right">
+            Discover a curated collection of premium open plots and architectural marvels designed for those who command the best.
+          </p>
           <a
             href="#properties"
-            className="group inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-xs font-semibold uppercase tracking-widest text-primary-foreground transition-transform duration-300 hover:scale-105"
+            className="group flex h-14 items-center gap-3 rounded-full bg-black px-8 text-xs font-bold uppercase tracking-widest text-white transition-all hover:scale-105 hover:bg-orange-500 shadow-lg"
           >
-            Explore Homes
-            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </a>
-          <a
-            href="tel:+919985358899"
-            className="glass-panel inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-xs font-semibold uppercase tracking-widest text-foreground transition-transform duration-300 hover:scale-105"
-          >
-            Book a Visit
-          </a>
-          <a
-            href="tel:+919985358899"
-            className="glass-panel inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-xs font-semibold uppercase tracking-widest text-foreground transition-transform duration-300 hover:scale-105 bg-accent text-accent-foreground"
-          >
-            Call Now
+            Explore Portfolio
+            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:rotate-45" />
           </a>
         </motion.div>
-      </motion.div>
-
-      {/* Villa dollying in out of the clouds */}
-      <motion.div
-        style={{ y: villaY, scale: villaScale, filter: villaBlur, opacity: villaOpacity }}
-        className="absolute inset-x-0 bottom-0 z-10 origin-bottom flex justify-center"
-      >
-        <motion.img
-          src={ASSETS.heroHouse}
-          alt="Modern Antera Realty residence emerging above the clouds"
-          initial={{ opacity: 0, y: 120, scale: 1.04 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-none"
-          style={{ width: "min(1500px, 128%)" }}
-        />
-      </motion.div>
-
-      {/* Subtle back cloud haze, mostly below the fold */}
-      <motion.div
-        style={{ y: backCloudY, opacity: backCloudOpacity, bottom: "-18vh" }}
-        className="pointer-events-none absolute inset-x-0 z-[25] origin-bottom"
-      >
-        <img
-          src={ASSETS.cloudStrip}
-          alt=""
-          loading="lazy"
-          className="animate-cloud-drift w-full max-w-none object-bottom"
-          style={{
-            ["--drift-duration" as string]: "30s",
-            objectPosition: "center bottom",
-            transform: "scaleX(-1)",
-          }}
-        />
-      </motion.div>
-
-      {/* Foreground cloud bank: only rises for the final transition */}
-      <motion.div
-        style={{
-          y: frontCloudY,
-          scale: frontCloudScale,
-          opacity: frontCloudOpacity,
-          bottom: "-18vh",
-        }}
-        className="pointer-events-none absolute inset-x-0 z-30 origin-bottom"
-      >
-        <img
-          src={ASSETS.cloudStrip}
-          alt=""
-          className="w-full max-w-none"
-          style={{ objectPosition: "center bottom" }}
-        />
-        <div className="h-24 w-full bg-white sm:h-28" />
-      </motion.div>
-
-      {/* Seamless hand-off veil into the next section */}
-      <motion.div
-        style={{ opacity: veilOpacity }}
-        className="pointer-events-none absolute inset-0 z-40 bg-background"
-      />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-40 h-20 bg-gradient-to-t from-background/80 to-transparent" />
       </div>
+
+      {/* 2. Interactive Arch Accordion Gallery (Desktop) / Swipeable Carousel (Mobile) */}
+      <div className="mt-8 flex h-[50vh] min-h-[350px] w-full max-w-7xl gap-3 overflow-x-auto snap-x snap-mandatory px-4 pb-4 md:mt-16 md:h-[60vh] md:min-h-0 md:gap-4 md:overflow-visible md:snap-none md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+        {GALLERY.map((item, index) => {
+          const isHovered = hoveredIndex === index;
+          // Force active state on mobile to show full text overlay always
+          const showContent = isMobile || isHovered;
+          
+          return (
+            <motion.div
+              key={item.id}
+              onMouseEnter={() => !isMobile && setHoveredIndex(index)}
+              onMouseLeave={() => !isMobile && setHoveredIndex(null)}
+              animate={{ 
+                flex: isMobile ? "0 0 auto" : (isHovered ? 3.5 : 1),
+                opacity: !isMobile && hoveredIndex !== null && !isHovered ? 0.6 : 1
+              }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              className="group relative flex h-full w-[85vw] shrink-0 snap-center cursor-pointer overflow-hidden rounded-[2rem] sm:rounded-[4rem] md:w-auto md:shrink"
+            >
+              <motion.img
+                src={item.img}
+                alt={item.title}
+                animate={{ scale: showContent ? 1.05 : 1.15 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute inset-0 h-full w-full object-cover transition-all"
+              />
+              
+              <div 
+                className={`absolute inset-0 transition-opacity duration-500 ${
+                  showContent ? 'bg-gradient-to-t from-black/80 via-black/20 to-transparent' : 'bg-black/20'
+                }`}
+              />
+
+              <motion.div 
+                className="absolute bottom-0 left-0 flex w-full flex-col p-6 sm:p-8"
+                animate={{ 
+                  y: showContent ? 0 : 20,
+                  opacity: showContent ? 1 : 0
+                }}
+                transition={{ duration: 0.5, delay: showContent ? 0.1 : 0 }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/20 backdrop-blur-md">
+                    <ArrowUpRight className="h-4 w-4 text-white" />
+                  </div>
+                  <h3 className="font-display text-2xl font-bold text-white sm:text-3xl whitespace-nowrap overflow-hidden text-ellipsis">
+                    {item.title}
+                  </h3>
+                </div>
+                <p className="mt-2 text-sm font-medium text-white/70 whitespace-nowrap overflow-hidden text-ellipsis">
+                  {item.subtitle}
+                </p>
+              </motion.div>
+            </motion.div>
+          );
+        })}
+      </div>
+
+      {/* 3. Bottom Stats Bar */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="mt-6 flex w-full max-w-7xl flex-wrap items-center justify-between gap-4 rounded-[2rem] border border-black/10 bg-white/40 px-6 py-4 backdrop-blur-md md:mt-8 md:flex-nowrap md:rounded-full md:px-8"
+      >
+        <div className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+          <span className="text-[10px] font-bold uppercase tracking-widest text-black/70 sm:text-xs">Available Properties</span>
+        </div>
+        
+        <div className="flex items-center gap-4 sm:gap-8">
+          <div className="flex flex-col text-right">
+            <span className="text-xs font-bold text-black sm:text-sm">150+</span>
+            <span className="text-[8px] uppercase tracking-widest text-black/50 sm:text-[10px]">Acres Developed</span>
+          </div>
+          <div className="h-8 w-px bg-black/10"></div>
+          <div className="flex flex-col text-right">
+            <span className="text-xs font-bold text-black sm:text-sm">Award Winning</span>
+            <span className="text-[8px] uppercase tracking-widest text-black/50 sm:text-[10px]">Architecture</span>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

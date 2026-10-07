@@ -1,143 +1,87 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "motion/react";
-import { useEffect, useRef, useState } from "react";
-
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
+import { useRef } from "react";
 import { ASSETS } from "@/lib/assets";
+import { Sparkles, ArrowRight } from "lucide-react";
 import { Reveal } from "./motion-primitives";
-
-const MARQUEE_WORDS = [
-  "Luxury Living",
-  "Timeless Architecture",
-  "Premium Villas",
-  "Crafted for Generations",
-];
 
 export function ShowcaseSection() {
   const ref = useRef<HTMLDivElement>(null);
+  // Total scroll height is 300vh to give enough time to scroll horizontally
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const p = useSpring(scrollYProgress, { stiffness: 90, damping: 26, mass: 0.4 });
+  
+  // Use a spring for buttery smooth horizontal scrolling
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 100, damping: 30, mass: 1 });
+  
+  // Transform the vertical scroll progress into horizontal translation
+  const x = useTransform(smoothProgress, [0, 1], ["0%", "-65%"]);
+  const textOpacity = useTransform(smoothProgress, [0.8, 1], [1, 0]);
 
-  // Viewport-aware sizing: a small square card that scales up to cover the screen
-  const [vp, setVp] = useState({ w: 1280, h: 800 });
-  useEffect(() => {
-    const read = () => setVp({ w: window.innerWidth, h: window.innerHeight });
-    read();
-    window.addEventListener("resize", read);
-    return () => window.removeEventListener("resize", read);
-  }, []);
-
-  const base = Math.max(200, Math.min(vp.w * 0.28, 380));
-  const coverScale = Math.max(vp.w / base, vp.h / base);
-
-  // Small centred card -> edge-to-edge cinematic frame, then held pinned
-  const mediaScale = useTransform(p, [0, 0.68, 1], [1, coverScale, coverScale]);
-  const radius = useTransform(mediaScale, (s) => `${28 / s}px`);
-  const overlayOpacity = useTransform(p, [0, 0.7], [0.15, 0.4]);
-  const captionOpacity = useTransform(p, [0.6, 0.82], [0, 1]);
-  const captionScale = useTransform(mediaScale, (s) => 1 / s);
-  const marqueeOpacity = useTransform(p, [0, 0.45], [1, 0]);
-  const marqueeScale = useTransform(p, [0, 0.45], [1, 1.08]);
-  const textOpacity = useTransform(p, [0, 0.35], [1, 0]);
+  const images = [
+    ASSETS.houses.modern,
+    ASSETS.houses.hillside,
+    ASSETS.houses.glass,
+    ASSETS.houses.modern, // Duplicating for extra track length
+  ];
 
   return (
-    <section ref={ref} className="relative bg-background" style={{ height: "340vh" }}>
-      <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
-        {/* Oversized background typography */}
-        <motion.div
-          style={{ opacity: marqueeOpacity, scale: marqueeScale }}
-          className="pointer-events-none absolute inset-x-0 top-[18%] z-0 flex overflow-hidden"
+    <section ref={ref} id="showcase" className="relative bg-[#EFECE6] h-[300vh]">
+      <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center">
+        
+        {/* Fixed Text Section */}
+        <motion.div 
+          style={{ opacity: textOpacity }}
+          className="absolute top-0 left-0 w-full pt-32 lg:pt-40 px-4 md:px-8 z-20 pointer-events-none"
         >
-          <div
-            className="animate-marquee-x flex shrink-0 items-center gap-10"
-            style={{ ["--marquee-duration" as string]: "34s" }}
-          >
-            {[...MARQUEE_WORDS, ...MARQUEE_WORDS, ...MARQUEE_WORDS, ...MARQUEE_WORDS].map(
-              (word, i) => (
-                <span
-                  key={`bg-${word}-${i}`}
-                  className="display-title whitespace-nowrap text-5xl text-foreground/10 sm:text-7xl lg:text-8xl"
-                >
-                  {word}
-                  <span className="ml-10 text-accent/40">&bull;</span>
-                </span>
-              ),
-            )}
+          <div className="max-w-7xl mx-auto flex flex-col gap-6">
+            <Reveal>
+              <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-black/50">
+                <Sparkles className="h-4 w-4 text-orange-500" />
+                <span>Highlighted Lifestyle</span>
+              </div>
+            </Reveal>
+            <Reveal delay={0.06}>
+              <h2 className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-tight tracking-tighter text-black max-w-4xl drop-shadow-sm">
+                Modern homes, <br />
+                <span className="text-black/40 italic">designed to live better.</span>
+              </h2>
+            </Reveal>
           </div>
         </motion.div>
 
-        {/* Headline sits behind the video */}
-        <motion.div
-          style={{ opacity: textOpacity }}
-          className="absolute inset-0 z-[1] flex flex-col items-center justify-center gap-4 px-6 text-center"
-        >
-          <Reveal>
-            <span className="eyebrow">Highlighted Home</span>
-          </Reveal>
-          <Reveal delay={0.06}>
-            <h2 className="section-title max-w-3xl">Modern homes, designed to live better</h2>
-          </Reveal>
-          <Reveal delay={0.12}>
-            <p className="max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Explore how modern homes are designed to feel clean, open, and functional.
-            </p>
-          </Reveal>
-        </motion.div>
-
-        <motion.div
-          style={{ width: base, height: base, borderRadius: radius, scale: mediaScale }}
-          className="soft-shadow relative z-10 origin-center overflow-hidden bg-primary will-change-transform"
-        >
-          <video
-            src="/videos/1.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            className="h-full w-full object-cover"
-          />
-          <motion.div
-            style={{ opacity: overlayOpacity }}
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"
-          />
-          <motion.div
-            style={{
-              opacity: captionOpacity,
-              scale: captionScale,
-              x: "-50%",
-              y: "-50%",
-              width: vp.w,
-              height: vp.h,
-            }}
-            className="absolute left-1/2 top-1/2 flex origin-center flex-col justify-end gap-6 p-6 sm:p-10"
-          >
-            <div className="flex w-full overflow-hidden">
-              <div
-                className="animate-marquee-x flex shrink-0 items-center gap-8"
-                style={{ ["--marquee-duration" as string]: "26s" }}
+        {/* Horizontally Scrolling Track */}
+        <div className="relative mt-20 lg:mt-40 flex items-center z-10 pl-4 md:pl-8">
+          <motion.div style={{ x }} className="flex gap-8 md:gap-16 items-center w-max">
+            {images.map((src, idx) => (
+              <div 
+                key={idx} 
+                className="relative overflow-hidden rounded-[2rem] sm:rounded-[3xl] shadow-2xl shrink-0 border border-black/5"
+                style={{ width: "80vw", maxWidth: "600px", height: "60vh", maxHeight: "500px" }}
               >
-                {[...MARQUEE_WORDS, ...MARQUEE_WORDS, ...MARQUEE_WORDS, ...MARQUEE_WORDS].map(
-                  (word, i) => (
-                    <span
-                      key={`${word}-${i}`}
-                      className="display-title whitespace-nowrap text-2xl text-primary-foreground/85 sm:text-4xl"
-                    >
-                      {word}
-                      <span className="ml-8 text-accent">&bull;</span>
-                    </span>
-                  ),
-                )}
+                <img
+                  src={src}
+                  alt={`Modern home design ${idx + 1}`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-1000 hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none" />
               </div>
+            ))}
+            
+            {/* Final CTA Card at the end of the track */}
+            <div className="relative flex flex-col items-center justify-center shrink-0 w-[40vw] max-w-[300px] h-[60vh] max-h-[500px] px-8 text-center gap-6">
+              <h3 className="font-display text-3xl font-bold">Ready to <br/>explore?</h3>
+              <a
+                href="#properties"
+                className="group flex h-14 w-14 items-center justify-center rounded-full bg-black text-white transition-transform hover:scale-110 hover:bg-orange-500 shadow-xl"
+              >
+                <ArrowRight className="h-6 w-6 transition-transform group-hover:translate-x-1" />
+              </a>
             </div>
-            <a
-              href="#properties"
-              className="glass-panel inline-flex w-fit rounded-full px-6 py-3 text-xs font-semibold uppercase tracking-widest text-foreground transition-transform duration-300 hover:scale-105"
-            >
-              Explore Homes
-            </a>
           </motion.div>
-        </motion.div>
+        </div>
+        
       </div>
     </section>
   );

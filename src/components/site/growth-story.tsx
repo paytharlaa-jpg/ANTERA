@@ -1,69 +1,71 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import { useRef } from "react";
-
 import { GROWTH_WORDS } from "@/lib/antera-data";
 import { Reveal } from "./motion-primitives";
-import { Eyebrow } from "./ui";
 
 export function GrowthStory() {
   const ref = useRef<HTMLDivElement>(null);
+  // Increased total scroll height to 600vh to give enough time to scroll all massive words
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
-  const x = useTransform(scrollYProgress, [0.15, 1], ["12%", "-58%"]);
-  const copyOpacity = useTransform(scrollYProgress, [0, 0.12, 0.3], [1, 1, 0]);
+  
+  // Spring physics for smooth scrolling
+  const smoothProgress = useSpring(scrollYProgress, { stiffness: 80, damping: 25, mass: 1 });
+  
+  // Transform scroll progress to vertical text movement (increased negative value to pull it all the way up)
+  const y = useTransform(smoothProgress, [0, 1], ["60vh", "-380vh"]);
+  
+  // Fade out the title at the very end
+  const fadeOut = useTransform(smoothProgress, [0.85, 1], [1, 0]);
 
   return (
-    <section
-      ref={ref}
-      id="growth"
-      className="relative bg-primary text-primary-foreground"
-      style={{ height: "300vh" }}
-    >
-      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
-        <div className="hairline-grid pointer-events-none absolute inset-0 opacity-30" />
-
-        <motion.div
-          style={{ opacity: copyOpacity }}
-          className="relative mx-auto flex w-full max-w-5xl flex-col gap-6 px-6"
+    <section ref={ref} id="growth" className="relative bg-[#050505] h-[600vh]">
+      {/* Sticky container */}
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden">
+        
+        {/* Deep background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] bg-orange-600/10 blur-[120px] rounded-full pointer-events-none z-0" />
+        
+        {/* Fixed Title */}
+        <motion.div 
+          style={{ opacity: fadeOut }}
+          className="absolute top-20 md:top-32 left-1/2 -translate-x-1/2 text-center z-20 flex flex-col items-center gap-4 w-full px-4"
         >
-          <Reveal>
-            <Eyebrow tone="dark">The Growth Story</Eyebrow>
-          </Reveal>
-          <Reveal delay={0.06}>
-            <h2 className="big-title">
-              Invest Where Hyderabad
-              <span className="block text-accent">Is Moving Next.</span>
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="max-w-2xl text-sm leading-relaxed text-primary-foreground/70 sm:text-base">
-              The Srisailam Highway&ndash;Future City corridor is becoming an important area to watch
-              as major road connectivity, employment destinations, institutional development and
-              urban expansion continue toward southern Hyderabad. For buyers, the opportunity isn't
-              simply about purchasing a plot. It's about choosing where the next chapter of the city
-              may unfold.
-            </p>
-          </Reveal>
+           <Reveal>
+             <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white/50">
+               <span className="h-2 w-2 rounded-full bg-orange-500"></span>
+               <span>The Growth Story</span>
+               <span className="h-2 w-2 rounded-full bg-orange-500"></span>
+             </div>
+           </Reveal>
         </motion.div>
 
-        <motion.div style={{ x }} className="relative mt-10 flex w-max items-center gap-10 px-6">
-          {GROWTH_WORDS.map((word, i) => (
-            <span key={word} className="flex items-center gap-10">
-              <span className="display-title whitespace-nowrap text-[14vw] leading-none text-primary-foreground/90">
-                {word}
-              </span>
-              {i < GROWTH_WORDS.length - 1 ? (
-                <span className="display-title text-[8vw] leading-none text-accent">&darr;</span>
-              ) : null}
-            </span>
-          ))}
-        </motion.div>
-
-        <p className="relative mx-auto mt-8 w-full max-w-5xl px-6 text-xs text-primary-foreground/50">
-          Future growth is presented as potential, not certainty. No appreciation or returns are
-          guaranteed.
-        </p>
+        {/* Scrolling Massive Typography */}
+        <div className="absolute inset-0 z-10 w-full flex flex-col items-center justify-start pointer-events-none pt-[50vh]">
+          <motion.div style={{ y }} className="flex flex-col items-center justify-start gap-20 sm:gap-32 w-full">
+            {GROWTH_WORDS.map((word, i) => (
+              <div key={word} className="flex flex-col items-center gap-20 sm:gap-32 shrink-0">
+                <span className="font-display text-6xl sm:text-[6rem] md:text-[8rem] lg:text-[10rem] font-bold tracking-tighter text-white drop-shadow-[0_0_40px_rgba(249,115,22,0.4)] text-center">
+                  {word}
+                </span>
+                
+                {/* Connecting glowing line */}
+                {i < GROWTH_WORDS.length - 1 && (
+                  <div className="h-24 sm:h-32 w-px bg-gradient-to-b from-orange-500 to-transparent" />
+                )}
+              </div>
+            ))}
+            
+            {/* Disclaimer at the end of the scroll */}
+            <div className="mt-32 max-w-md text-center shrink-0">
+              <p className="text-[10px] uppercase tracking-widest text-white/30 font-bold px-8">
+                Future growth is presented as potential, not certainty. No appreciation or returns are guaranteed.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+        
       </div>
     </section>
   );

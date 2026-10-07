@@ -106,6 +106,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: "/favicon.png", type: "image/png" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "RealEstateAgent",
+          name: "Antera Realty",
+          url: "https://anterarealty.com",
+          telephone: "+919985358899",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Opp. Mangalya Shopping Mall",
+            addressLocality: "Vanasthalipuram",
+            addressRegion: "Hyderabad",
+            addressCountry: "IN"
+          },
+          areaServed: "Hyderabad",
+          sameAs: []
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
