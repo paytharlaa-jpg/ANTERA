@@ -4,6 +4,7 @@ import { BLOG_POSTS } from "@/lib/blog-data";
 import { SiteNav } from "@/components/site/site-nav";
 import { SiteFooter } from "@/components/site/site-footer";
 import { FloatingWhatsApp } from "@/components/site/floating-whatsapp";
+import { ASSETS } from "@/lib/assets";
 
 const TITLE = "Real Estate Blog | Antera Realty";
 const DESCRIPTION =
@@ -28,16 +29,27 @@ function BlogIndex() {
       <SiteNav />
       
       {/* Header Section */}
-      <section className="bg-[#0a0a0c] text-white pt-40 pb-20 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto flex flex-col gap-6">
+      <section className="relative bg-[#0a0a0c] text-white pt-48 pb-24 px-4 md:px-8 overflow-hidden">
+        {/* Background Image & Overlays */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={ASSETS.houses.modern} 
+            alt="Antera Realty Properties" 
+            className="w-full h-full object-cover opacity-40 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0c] to-transparent opacity-80" />
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto flex flex-col gap-6">
           <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-white/50">
             <span className="h-2 w-2 rounded-full bg-orange-500"></span>
             <span>Insights & Research</span>
           </div>
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold tracking-tighter">
+          <h1 className="font-display text-5xl sm:text-6xl md:text-8xl font-bold tracking-tighter drop-shadow-xl">
             Antera <span className="text-orange-500 italic">Journal.</span>
           </h1>
-          <p className="max-w-xl text-lg text-white/60">
+          <p className="max-w-xl text-lg text-white/60 drop-shadow-sm">
             Expert insights, buying guides, and the latest updates on Hyderabad's most promising real estate corridors.
           </p>
         </div>
