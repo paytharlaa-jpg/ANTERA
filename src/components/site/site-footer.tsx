@@ -26,22 +26,66 @@ const BROCHURES = [
 export function SiteFooter() {
   return (
     <footer className="relative bg-charcoal px-6 pb-10 pt-20 text-primary-foreground">
-      <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-4">
-        <div className="flex flex-col gap-4 md:col-span-1">
-          <div className="flex items-center gap-3">
-            <img src={ASSETS.anteraLogo} alt="" className="h-12 w-12 rounded-lg bg-primary-foreground p-1" />
-            <span className="flex flex-col">
-              <span className="display-title text-base tracking-[0.12em]">ANTERA REALTY</span>
-              <span className="font-mono text-[0.58rem] uppercase tracking-[0.16em] text-primary-foreground/55">
-                {BRAND.tagline}
+      <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-2 lg:grid-cols-5">
+        
+        {/* Company & Leadership Column */}
+        <div className="flex flex-col gap-10 md:col-span-2 lg:col-span-2">
+          {/* Logo & Info */}
+          <div className="flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <img src={ASSETS.anteraLogo} alt="" className="h-12 w-12 rounded-lg bg-primary-foreground p-1" />
+              <span className="flex flex-col">
+                <span className="display-title text-base tracking-[0.12em]">ANTERA REALTY</span>
+                <span className="font-mono text-[0.58rem] uppercase tracking-[0.16em] text-primary-foreground/55">
+                  {BRAND.tagline}
+                </span>
               </span>
-            </span>
+            </div>
+            <p className="text-sm text-primary-foreground/60 max-w-sm">{BRAND.location}</p>
           </div>
-          <p className="text-sm font-semibold text-primary-foreground/90">{BRAND.contactName}</p>
-          <p className="text-sm text-primary-foreground/60">{BRAND.location}</p>
-          <a href={`tel:${BRAND.phoneRaw}`} className="text-sm font-bold text-accent hover:text-white">
-            Call Now
-          </a>
+
+          {/* Leadership Team */}
+          <div className="flex flex-col gap-6">
+            <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-accent">Leadership Team</span>
+            
+            <div className="flex flex-col sm:flex-row gap-8">
+              {/* Founder */}
+              <div className="flex items-center gap-4">
+                <div className="h-14 w-14 overflow-hidden rounded-full border-2 border-primary-foreground/10 bg-black/20 shrink-0">
+                  <img 
+                    src="/team/founder.png" 
+                    alt="Nagunuri Raju" 
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-sm font-bold text-primary-foreground">Nagunuri Raju</span>
+                  <span className="text-[10px] uppercase tracking-widest text-primary-foreground/50 mb-1">Founder</span>
+                  <a href="tel:+919560776917" className="text-xs font-semibold text-accent hover:text-white transition-colors">
+                    +91 9560776917
+                  </a>
+                </div>
+              </div>
+
+              {/* Co-Founder */}
+              <div className="flex items-center gap-4">
+                <div className="h-14 w-14 overflow-hidden rounded-full border-2 border-primary-foreground/10 bg-black/20 shrink-0">
+                  <img 
+                    src="/team/cofounder.jpg" 
+                    alt="Vamshi Krishna" 
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-sm font-bold text-primary-foreground">Vamshi Krishna</span>
+                  <span className="text-[10px] uppercase tracking-widest text-primary-foreground/50 mb-1">Co-founder</span>
+                  <a href="tel:+919618782108" className="text-xs font-semibold text-accent hover:text-white transition-colors">
+                    +91 9618782108
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <nav className="flex flex-col gap-3" aria-label="Footer navigation">
@@ -73,15 +117,15 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-3">
           <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-accent">Legal</span>
-          <span className="text-sm text-primary-foreground/70">Privacy Policy</span>
-          <span className="text-sm text-primary-foreground/70">Terms &amp; Conditions</span>
-          <span className="text-sm text-primary-foreground/70">Disclaimer</span>
+          <span className="text-sm text-primary-foreground/70 cursor-pointer hover:text-accent transition-colors">Privacy Policy</span>
+          <span className="text-sm text-primary-foreground/70 cursor-pointer hover:text-accent transition-colors">Terms &amp; Conditions</span>
+          <span className="text-sm text-primary-foreground/70 cursor-pointer hover:text-accent transition-colors">Disclaimer</span>
         </div>
       </div>
 
-      <div className="mx-auto mt-14 max-w-6xl border-t border-primary-foreground/12 pt-8">
+      <div className="mx-auto mt-16 max-w-7xl border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row justify-between gap-4">
         <p className="max-w-4xl text-[0.7rem] leading-relaxed text-primary-foreground/45">{DISCLAIMER}</p>
-        <p className="mt-6 text-[0.7rem] text-primary-foreground/45">
+        <p className="text-[0.7rem] text-primary-foreground/45 shrink-0">
           Copyright &copy; 2026 {BRAND.name}. All rights reserved.
         </p>
       </div>
