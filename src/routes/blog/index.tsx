@@ -65,6 +65,15 @@ function BlogIndex() {
               params={{ slug: post.slug }}
               className="group flex flex-col gap-6 bg-white rounded-3xl p-8 border border-black/5 hover:border-orange-500/50 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
             >
+              {post.image && (
+                <div className="w-full h-48 -mt-2 -mx-2 mb-1 rounded-2xl overflow-hidden self-center border border-black/5 bg-stone-100">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              )}
               <div className="flex items-center justify-between">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-orange-500 bg-orange-50 px-3 py-1 rounded-full">
                   {post.category}

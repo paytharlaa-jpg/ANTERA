@@ -11,9 +11,271 @@ export interface BlogPost {
   readTime: string;
   excerpt: string;
   content: string; // HTML or Markdown for the body
+  image?: string;
 }
 
 export const BLOG_POSTS: BlogPost[] = [
+  {
+    slug: "isha-yoga-center-shabad-telangana-900-crore-project",
+    title: "Isha Yoga Center in Shabad: ₹900 Crore Mega Project Planned Across 300 Acres in Telangana",
+    meta: "Telangana is set to welcome a proposed ₹900 crore Isha Yoga Center project in Shabad, Rangareddy district, featuring an Adiyogi statue, educational institutions, wellness facilities and potential employment opportunities.",
+    date: "2026-10-23",
+    updatedAt: "2026-10-23",
+    author: "Antera Insights",
+    category: "Project Updates",
+    readTime: "5 min read",
+    image: "/assets/isha-yoga-center-shabad.jpg",
+    excerpt: "Telangana is set to welcome a proposed ₹900 crore Isha Yoga Center across 300 acres in Shabad, Rangareddy district. Featuring an Adiyogi statue, educational institutions, and wellness facilities, the project is expected to create 14,000 employment opportunities.",
+    content: `
+      <div class="answer rounded-2xl bg-orange-50/80 p-6 md:p-8 border-l-4 border-orange-500 mb-8 shadow-sm">
+        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-orange-600 mb-2">
+          <span class="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
+          Key Highlights
+        </div>
+        <p class="text-stone-900 font-medium text-base leading-relaxed">
+          <strong>Executive Summary:</strong> Telangana is set to welcome a proposed ₹900 crore mega project by the Isha Foundation across 300 acres in Shabad, Rangareddy district. Featuring a magnificent Adiyogi statue, international yoga centre, schools, wellness sanctuaries, and agroforestry, the project is projected to generate up to 14,000 employment opportunities and transform Hyderabad's southwestern corridor into a world-class spiritual tourism destination.
+        </p>
+      </div>
+
+      <div class="my-8 rounded-2xl overflow-hidden border border-black/10 shadow-lg">
+        <img 
+          src="/assets/isha-yoga-center-shabad.jpg" 
+          alt="Conceptual view of the proposed 300-acre Isha Yoga Center and Adiyogi statue in Shabad, Telangana" 
+          class="w-full h-auto object-cover max-h-[480px]"
+        />
+        <p class="text-xs text-stone-500 text-center py-2.5 bg-stone-50 border-t border-black/5 italic">
+          Conceptual visualization of the planned 300-acre spiritual and wellness campus in Shabad, Telangana
+        </p>
+      </div>
+
+      <h2 class="text-2xl md:text-3xl font-display font-bold mt-10 mb-4 text-stone-900">
+        Introduction
+      </h2>
+      <p class="mb-4 leading-relaxed">
+        Telangana could soon become a major destination for spiritual tourism and wellness with a proposed mega project by the Isha Foundation in Shabad, Rangareddy district, near Hyderabad.
+      </p>
+      <p class="mb-4 leading-relaxed">
+        According to reports published on October 14, 2026, the proposed project involves an investment of approximately ₹900 crore and is planned across 300 acres. The development is expected to bring together spirituality, yoga, education, wellness and nature-based living in one integrated campus.
+      </p>
+      <p class="mb-6 leading-relaxed">
+        The project could also create new employment opportunities and increase interest in the surrounding region. <a href="https://www.v6velugu.com/isha-foundation-to-set-up-300-acre-spiritual-and-wellness-centre-in-telangana-14000-jobs-expected" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:text-orange-700 font-semibold underline underline-offset-4 decoration-orange-400">Read the initial news report on V6 Velugu</a>.
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-display font-bold mt-10 mb-4 text-stone-900">
+        What Is the Isha Yoga Center Project in Shabad?
+      </h2>
+      <p class="mb-4 leading-relaxed">
+        The proposed campus, associated with the Coimbatore-based Isha Foundation, is envisioned as an integrated spiritual and educational destination.
+      </p>
+      <p class="mb-4 leading-relaxed">
+        The reported project name is <strong>“Abode of Yoga, Educational Institutions and International Yoga Centre.”</strong> It is expected to combine spiritual infrastructure with educational institutions, visitor facilities and wellness-related amenities.
+      </p>
+      <p class="mb-6 leading-relaxed">
+        Shabad, located in Rangareddy district on Hyderabad's southwestern outskirts, has been attracting attention because of its developing industrial and infrastructure landscape. The proposed campus could add another dimension to the region by attracting spiritual seekers, domestic tourists and international visitors.
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-display font-bold mt-10 mb-4 text-stone-900">
+        A Grand Adiyogi Statue Planned for Telangana
+      </h2>
+      <p class="mb-4 leading-relaxed">
+        One of the most anticipated features of the proposed development is an Adiyogi statue inspired by the iconic statue at the Isha Yoga Center in Coimbatore, Tamil Nadu.
+      </p>
+      <p class="mb-4 leading-relaxed">
+        Adiyogi has become a prominent symbol of yoga and meditation, attracting visitors seeking spiritual experiences and a deeper connection with Indian traditions.
+      </p>
+      <p class="mb-6 leading-relaxed">
+        If developed as reported, the Telangana campus could become an important destination for yoga practitioners, meditation enthusiasts and people interested in Indian spiritual heritage.
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-display font-bold mt-10 mb-4 text-stone-900">
+        ₹900 Crore Investment: What Facilities Are Expected?
+      </h2>
+      <p class="mb-4 leading-relaxed">
+        The reported investment plan outlines a phased development combining spirituality, education, wellness and visitor infrastructure.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
+        <div class="p-5 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <div class="font-bold text-stone-900 mb-1 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+            Spiritual Infrastructure
+          </div>
+          <p class="text-sm text-stone-600">Dedicated spaces for yoga, meditation, consecrated halls, and spiritual programmes.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <div class="font-bold text-stone-900 mb-1 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+            Adiyogi Statue
+          </div>
+          <p class="text-sm text-stone-600">A monumental landmark inspired by the globally renowned Coimbatore campus.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <div class="font-bold text-stone-900 mb-1 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+            Educational Institutions
+          </div>
+          <p class="text-sm text-stone-600">Value-based schools, learning centers, and residential educational facilities.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <div class="font-bold text-stone-900 mb-1 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+            Wellness Facilities
+          </div>
+          <p class="text-sm text-stone-600">Dedicated sanctuaries for holistic wellness, ayurveda, rejuvenation, and health programmes.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <div class="font-bold text-stone-900 mb-1 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+            Visitor Amenities
+          </div>
+          <p class="text-sm text-stone-600">Comprehensive welcome centres, guest cottages, dining spaces, and large-capacity assembly halls.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <div class="font-bold text-stone-900 mb-1 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+            Agroforestry Initiatives
+          </div>
+          <p class="text-sm text-stone-600">Tree plantations, sustainable agriculture, soil revitalization, and ecological conservation.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <div class="font-bold text-stone-900 mb-1 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+            Rural Healthcare
+          </div>
+          <p class="text-sm text-stone-600">Community clinics and outreach initiatives providing healthcare access to neighbouring villages.</p>
+        </div>
+        <div class="p-5 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <div class="font-bold text-stone-900 mb-1 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+            Leadership Development
+          </div>
+          <p class="text-sm text-stone-600">A proposed Global Leadership Academy in a subsequent development phase.</p>
+        </div>
+      </div>
+
+      <p class="mb-4 leading-relaxed text-sm text-stone-600">
+        The development is expected to take place in two phases, with additional facilities planned as the project progresses.
+      </p>
+      <p class="mb-6 p-4 rounded-xl bg-stone-100/80 border border-stone-200 text-xs text-stone-600 italic">
+        <strong>Note:</strong> The investment figures, land allocation and proposed facilities are based on media reports and should be confirmed through official project documents.
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-display font-bold mt-10 mb-4 text-stone-900">
+        14,000 Employment Opportunities: A Potential Boost for Local Communities
+      </h2>
+      <p class="mb-4 leading-relaxed">
+        One of the most significant reported benefits is the potential to generate approximately 14,000 direct and indirect employment opportunities once the campus becomes fully operational.
+      </p>
+      <p class="mb-4 leading-relaxed">
+        The proposed development could create demand across several sectors, including:
+      </p>
+      <ul class="list-disc pl-6 mb-6 space-y-2 leading-relaxed">
+        <li><strong>Hospitality and hotel management:</strong> Accommodation, guest hosting, and eco-resort administration.</li>
+        <li><strong>Tourism and visitor services:</strong> Guides, tour management, and event handling.</li>
+        <li><strong>Yoga instruction and wellness programmes:</strong> Qualified practitioners, trainers, and healers.</li>
+        <li><strong>Education and teaching:</strong> School faculty, administrative personnel, and child mentors.</li>
+        <li><strong>Healthcare and wellness support:</strong> Medical professionals, therapists, and clinic staff.</li>
+        <li><strong>Administration and campus operations:</strong> Facility managers, accounts, and IT infrastructure.</li>
+        <li><strong>Transportation and logistics:</strong> Fleet operations, shuttle routes, and transit coordination.</li>
+        <li><strong>Agriculture and agroforestry:</strong> Farming experts, horticulturists, and nurseries.</li>
+        <li><strong>Food services and housekeeping:</strong> Culinary teams, kitchen staff, and cleaning personnel.</li>
+        <li><strong>Security and facility management:</strong> Round-the-clock safety and grounds maintenance.</li>
+      </ul>
+      <p class="mb-6 leading-relaxed">
+        Local businesses could also benefit from increased demand for accommodation, food, transportation and other visitor services. However, the reported employment figure represents an expectation rather than a confirmed number of jobs already created.
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-display font-bold mt-10 mb-4 text-stone-900">
+        How Could the Project Impact Shabad and Nearby Areas?
+      </h2>
+      <p class="mb-4 leading-relaxed">
+        The proposed Isha campus could strengthen Shabad's profile as an emerging destination for tourism, wellness and investment. Potential effects include:
+      </p>
+
+      <div class="space-y-4 my-6">
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <h3 class="text-lg font-bold text-stone-900 mb-2">1. Increased Tourism</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">A major spiritual destination could attract visitors from different parts of India and overseas, creating opportunities for hotels, resorts, homestays, restaurants and tour operators.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <h3 class="text-lg font-bold text-stone-900 mb-2">2. Growth in Local Businesses</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">An increase in visitors and campus activity could create demand for transportation, catering, retail, accommodation and other support services.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <h3 class="text-lg font-bold text-stone-900 mb-2">3. Improved Regional Connectivity</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">Greater visitor movement could increase the importance of road connectivity between Shabad, Hyderabad, the airport and neighbouring areas. Any specific infrastructure upgrades would depend on separate government plans and approvals.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <h3 class="text-lg font-bold text-stone-900 mb-2">4. New Employment Opportunities</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">The project could generate demand for skilled and unskilled workers across education, hospitality, healthcare, tourism and campus management.</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-white border border-stone-200/80 shadow-sm">
+          <h3 class="text-lg font-bold text-stone-900 mb-2">5. Greater Interest in Real Estate</h3>
+          <p class="text-stone-700 text-sm leading-relaxed">As the area attracts more attention, buyers and developers may explore residential and commercial opportunities nearby. However, the actual impact on property values will depend on infrastructure, demand, land-use regulations and project execution.</p>
+        </div>
+      </div>
+
+      <h2 class="text-2xl md:text-3xl font-display font-bold mt-10 mb-4 text-stone-900">
+        Could Shabad Become a Major Spiritual Tourism Destination?
+      </h2>
+      <p class="mb-4 leading-relaxed">
+        Hyderabad already serves as an important gateway for business, tourism and cultural activities in Telangana. A large-scale spiritual and wellness campus on the city's outskirts could diversify the region's tourism offering.
+      </p>
+      <p class="mb-4 leading-relaxed">
+        The proposed development could attract visitors interested in yoga retreats, meditation, educational programmes and wellness experiences.
+      </p>
+      <p class="mb-6 leading-relaxed">
+        Its long-term success will depend on the completion of planned facilities, accessibility, environmental considerations, visitor demand and the project's implementation.
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-display font-bold mt-10 mb-4 text-stone-900">
+        What Does This Mean for Telangana?
+      </h2>
+      <p class="mb-4 leading-relaxed">
+        The proposed ₹900 crore Isha Yoga Center project represents an ambitious vision for combining spirituality, education and wellness infrastructure.
+      </p>
+      <p class="mb-4 leading-relaxed">
+        If implemented as reported, it could provide new opportunities for local communities, encourage tourism-related businesses and bring additional attention to Shabad and the surrounding areas.
+      </p>
+      <p class="mb-6 leading-relaxed">
+        At the same time, the final scale of the development, investment schedule, employment generation and associated infrastructure improvements will need to be assessed as more official information becomes available.
+      </p>
+
+      <h2 class="text-2xl md:text-3xl font-display font-bold mt-10 mb-4 text-stone-900">
+        Conclusion
+      </h2>
+      <p class="mb-4 leading-relaxed">
+        The proposed Isha Yoga Center in Shabad is a major development to watch in Telangana's evolving tourism and infrastructure landscape.
+      </p>
+      <p class="mb-4 leading-relaxed">
+        With a reported investment of ₹900 crore, a planned 300-acre campus, an Adiyogi statue and facilities spanning education and wellness, the project has the potential to create a distinctive destination near Hyderabad.
+      </p>
+      <p class="mb-6 leading-relaxed">
+        For residents, entrepreneurs, tourism operators and real estate observers, the key question now is how the proposal progresses from planning to execution.
+      </p>
+
+      <div class="my-8 p-6 rounded-2xl bg-amber-50/70 border border-amber-200/80">
+        <p class="text-xs text-amber-900/80 leading-relaxed italic">
+          <strong>Disclaimer:</strong> This article is based on media reports available as of October 23, 2026. Project specifications, land allocation, approvals, investment amounts and projected employment figures should be independently verified before being treated as final.
+        </p>
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-stone-200">
+        <span class="text-xs font-bold uppercase tracking-wider text-stone-500 block mb-3">SEO Keywords & Topics</span>
+        <div class="flex flex-wrap gap-2">
+          <span class="text-xs bg-stone-100 text-stone-700 px-3 py-1.5 rounded-full font-medium">Isha Yoga Center Shabad</span>
+          <span class="text-xs bg-stone-100 text-stone-700 px-3 py-1.5 rounded-full font-medium">Isha Foundation Telangana</span>
+          <span class="text-xs bg-stone-100 text-stone-700 px-3 py-1.5 rounded-full font-medium">Shabad ₹900 crore project</span>
+          <span class="text-xs bg-stone-100 text-stone-700 px-3 py-1.5 rounded-full font-medium">Adiyogi statue Telangana</span>
+          <span class="text-xs bg-stone-100 text-stone-700 px-3 py-1.5 rounded-full font-medium">300-acre yoga centre</span>
+          <span class="text-xs bg-stone-100 text-stone-700 px-3 py-1.5 rounded-full font-medium">Shabad Rangareddy development</span>
+          <span class="text-xs bg-stone-100 text-stone-700 px-3 py-1.5 rounded-full font-medium">Telangana spiritual tourism</span>
+          <span class="text-xs bg-stone-100 text-stone-700 px-3 py-1.5 rounded-full font-medium">Hyderabad infrastructure news</span>
+          <span class="text-xs bg-stone-100 text-stone-700 px-3 py-1.5 rounded-full font-medium">Shabad real estate development</span>
+        </div>
+      </div>
+    `
+  },
   {
     slug: "is-srisailam-highway-good-for-plot-investment-2026",
     title: "Is Srisailam Highway Good for Plot Investment? (2026 Guide)",

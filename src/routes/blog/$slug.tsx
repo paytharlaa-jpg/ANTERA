@@ -20,12 +20,25 @@ export const Route = createFileRoute("/blog/$slug")({
       "@type": "Article",
       headline: post.title,
       description: post.meta,
+      image: post.image ? [`https://anterarealty.com${post.image}`] : undefined,
       author: {
         "@type": "Person",
-        name: post.author
+        name: post.author,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Antera Realty",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://anterarealty.com/assets/antera-logo.png",
+        },
       },
       datePublished: post.date,
       dateModified: post.updatedAt || post.date,
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": `https://anterarealty.com/blog/${post.slug}`,
+      },
     };
 
     return {
@@ -35,13 +48,26 @@ export const Route = createFileRoute("/blog/$slug")({
         { property: "og:title", content: post.title },
         { property: "og:description", content: post.meta },
         { property: "og:type", content: "article" },
+        { property: "og:url", content: `https://anterarealty.com/blog/${post.slug}` },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: post.title },
+        { name: "twitter:description", content: post.meta },
+        ...(post.image
+          ? [
+              { property: "og:image", content: `https://anterarealty.com${post.image}` },
+              { name: "twitter:image", content: `https://anterarealty.com${post.image}` },
+            ]
+          : []),
+      ],
+      links: [
+        { rel: "canonical", href: `https://anterarealty.com/blog/${post.slug}` },
       ],
       scripts: [
         {
           type: "application/ld+json",
           children: JSON.stringify(articleSchema),
-        }
-      ]
+        },
+      ],
     };
   },
   component: BlogPostPage,
