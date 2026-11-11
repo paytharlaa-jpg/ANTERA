@@ -37,7 +37,7 @@ const FEATURE_ICONS: LucideIcon[] = [Compass, RouteIcon, Baby, Droplets, Bike, U
 const FAQS: Faq[] = [
   {
     q: "Is Mirai RERA approved?",
-    a: "Not yet. Mirai is HMDA approved as confirmed by Mugdha Realty, and its TG RERA registration is awaited. We will publish the registration number here once issued.",
+    a: "Not yet. Mirai is HMDA approved as confirmed by the promoter, and its TG RERA registration is awaited. We will publish the registration number here once issued.",
   },
   {
     q: "What is the price of plots at Mirai?",
@@ -45,7 +45,7 @@ const FAQS: Faq[] = [
   },
   {
     q: "Is Mirai part of Magnus Smart City?",
-    a: "No. Mirai is a separate, smaller plotted development by Mugdha Realty near Rameshwaram, Shadnagar, with its own approvals and pricing.",
+    a: "No. Mirai is a separate, smaller plotted development by Antera Realty near Rameshwaram, Shadnagar, with its own approvals and pricing.",
   },
   {
     q: "How can I see available plots?",
@@ -55,13 +55,6 @@ const FAQS: Faq[] = [
 
 export function MiraiPage() {
   const gallery = useLightbox(MIRAI.gallery as unknown as Media[]);
-  const card = useLightbox([
-    {
-      src: MIRAI.pricing.image,
-      alt: "Mirai price card dated 21 March 2026",
-      caption: "Mirai price card — 21 Mar 2026",
-    },
-  ]);
   const [hmda, rera] = MIRAI.approvals;
 
   return (
@@ -74,7 +67,7 @@ export function MiraiPage() {
           imagePosition="75% 45%"
           overlay="from-[oklch(0.17_0.03_210)] via-[oklch(0.17_0.03_210/0.7)] to-[oklch(0.17_0.03_210/0.35)]"
           logo="/projects/mirai/mirai-logo-light.png"
-          logoAlt="Mirai by Mugdha Realty"
+          logoAlt="Mirai by Antera Realty"
           eyebrow={
             <span className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-2 rounded-full bg-emerald-400/15 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-emerald-200">
@@ -86,7 +79,7 @@ export function MiraiPage() {
             </span>
           }
           title="Rooted in faith. Built for life."
-          lede="An intimate 7-acre (proposed) plotted community by Mugdha Realty, about 400 m from the Rameshwaram temple near Shadnagar — on a 60 ft government road, inside the proposed RRR zone."
+          lede="An intimate 7-acre (proposed) plotted community by Antera Realty, about 400 m from the Rameshwaram temple near Shadnagar — on a 60 ft government road, inside the proposed RRR zone."
           breadcrumb={[
             { label: "Home", href: "/" },
             { label: "Projects", href: "/#projects" },
@@ -149,7 +142,7 @@ export function MiraiPage() {
           <div className="container-x grid items-center gap-14 lg:grid-cols-12">
             <div className="flex flex-col gap-8 lg:col-span-7">
               <SectionHeading
-                eyebrow="Mirai by Mugdha Realty"
+                eyebrow="Mirai by Antera Realty"
                 title="A quieter address, close to the sacred."
               />
               <Reveal delay={0.1}>
@@ -321,8 +314,8 @@ export function MiraiPage() {
                     Explore the digital layout
                   </span>
                   <span className="max-w-xl text-sm text-primary-foreground/70">
-                    Zoom into every plot, road and open space on Mugdha Realty’s interactive Mirai
-                    layout. Opens in a new tab — works on mobile too.
+                    Zoom into every plot, road and open space on the interactive Mirai layout. Opens
+                    in a new tab — works on mobile too.
                   </span>
                 </div>
                 <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full bg-champagne text-ink transition-transform duration-500 group-hover:rotate-45">
@@ -356,11 +349,7 @@ export function MiraiPage() {
               </Reveal>
             </div>
             <Reveal className="lg:col-span-8">
-              <PriceCardView
-                card={MIRAI.pricing}
-                accent="var(--mirai)"
-                onViewOriginal={() => card.open(0)}
-              />
+              <PriceCardView card={MIRAI.pricing} accent="var(--mirai)" />
             </Reveal>
           </div>
         </section>
@@ -422,13 +411,12 @@ export function MiraiPage() {
         <FinalCta
           title="Begin your story at Mirai."
           defaultProject="Mirai"
-          image="/projects/mirai/brochure-cover.webp"
+          image="/projects/mirai/hero-plan.webp"
         />
       </main>
       <SiteFooter />
       <FloatingWhatsApp message={WA_MESSAGES.mirai} />
       {gallery.node}
-      {card.node}
     </>
   );
 }

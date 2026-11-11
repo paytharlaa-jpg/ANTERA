@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import { MiraiPage } from "@/components/projects/mirai-page";
 
-const TITLE = "Mirai by Mugdha Realty — Plots near Rameshwaram, Shadnagar | Antera Realty";
+const TITLE = "Mirai — Plots near Rameshwaram, Shadnagar | Antera Realty";
 const DESCRIPTION =
-  "Mirai by Mugdha Realty: a 7-acre (proposed) HMDA-approved plotted community about 400 m from Rameshwaram Temple, Shadnagar. TG RERA awaited. Residential plots from ₹14,999/sq. yd. Explore the interactive digital layout.";
+  "Mirai by Antera Realty: a 7-acre (proposed) HMDA-approved plotted community about 400 m from Rameshwaram Temple, Shadnagar. TG RERA awaited. Residential plots from ₹14,999/sq. yd. Explore the interactive digital layout.";
 const URL = "https://anterarealty.com/projects/mirai";
 
 export const Route = createFileRoute("/projects/mirai")({
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/projects/mirai")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Place",
-          name: "Mirai by Mugdha Realty",
+          name: "Mirai by Antera Realty",
           description: DESCRIPTION,
           url: URL,
           image: "https://anterarealty.com/projects/mirai/layout-plan.webp",

@@ -21,7 +21,7 @@ const CREATIVES: Media[] = [
   },
   {
     src: "/projects/magnus/phase-2-rera-announcement.webp",
-    alt: "Mugdha Magnus Smart City Phase 2 RERA received — P02400011410",
+    alt: "Magnus Smart City Phase 2 RERA received — P02400011410",
     caption: "Phase 2 — TG RERA received",
   },
 ];

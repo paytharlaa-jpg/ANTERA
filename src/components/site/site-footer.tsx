@@ -19,7 +19,6 @@ const COMPANY = [
 ];
 
 const DOCUMENTS = [
-  { label: "Magnus Smart City e-brochure", href: MAGNUS.brochure },
   {
     label: "Magnus Phase 1 — TG RERA certificate",
     href: "/assets/TG_RERA_APPROVED_CERTIFICATE-8.pdf",
@@ -161,7 +160,6 @@ export function SiteFooter() {
           </p>
           <div className="flex flex-col justify-between gap-3 text-[0.72rem] text-primary-foreground/45 sm:flex-row">
             <span>© {new Date().getFullYear()} Antera Realty. All rights reserved.</span>
-            <span>Magnus Smart City and Mirai are developments of Mugdha Realty.</span>
           </div>
         </div>
       </div>

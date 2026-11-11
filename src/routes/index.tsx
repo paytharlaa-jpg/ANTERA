@@ -60,8 +60,8 @@ function Index() {
         <ProjectsShowcase />
         <ZoomWindow
           src="/projects/magnus/clubhouse-render.webp"
-          alt="Mugdha Clubhouse at Magnus Smart City — architectural render"
-          caption="Mugdha Clubhouse, Magnus Smart City — architectural render, representational"
+          alt="Magnus Clubhouse at Magnus Smart City — architectural render"
+          caption="Magnus Clubhouse, Magnus Smart City — architectural render, representational"
         >
           <span className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-champagne">
             Magnus Smart City · Lifestyle

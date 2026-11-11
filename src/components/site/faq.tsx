@@ -24,7 +24,7 @@ export const HOME_FAQS: Faq[] = [
   },
   {
     q: "Is Mirai RERA approved?",
-    a: "Not yet. Mirai by Mugdha Realty is HMDA approved as confirmed by the promoter; its TG RERA registration is awaited. We will update this page as soon as the registration number is issued.",
+    a: "Not yet. Mirai by Antera Realty is HMDA approved as confirmed by the promoter; its TG RERA registration is awaited. We will update this page as soon as the registration number is issued.",
   },
   {
     q: "What is the booking amount and payment schedule?",

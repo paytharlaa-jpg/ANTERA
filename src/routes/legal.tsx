@@ -36,7 +36,7 @@ const SECTIONS = [
     body: [
       "The content on this website is for general information about projects marketed by Antera Realty and does not constitute an offer, contract or commitment to sell.",
       "Prices, availability, layouts and specifications are indicative, are dated where shown, and may change without notice. Confirm all details with our team and the promoter before making any payment.",
-      "Project names, logos and creatives belong to their respective promoters, including Mugdha Realty for Magnus Smart City and Mirai.",
+      "Project names, logos and creatives belong to their respective owners.",
     ],
   },
   {

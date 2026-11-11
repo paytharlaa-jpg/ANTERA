@@ -57,7 +57,6 @@ export const LOGOS = {
   antera: "/assets/antera-logo.png",
   magnus: "/projects/magnus/magnus-logo.png",
   mirai: "/projects/mirai/mirai-logo.png",
-  mugdha: "/projects/brand/mugdha-realty-logo.png",
 } as const;
 
 export const formatINR = (n: number) => `₹${n.toLocaleString("en-IN")}`;
@@ -88,7 +87,7 @@ const MAGNUS_PRICE_IMAGE = "/projects/magnus/price-card-2026-09-14.webp";
 export const MAGNUS = {
   slug: "magnus-smart-city",
   name: "Magnus Smart City",
-  developer: "Mugdha Realty",
+  developer: "Antera Realty",
   tagline: "The Blueprint for a Beautiful Life.",
   location: "Rameshwaram – Shadnagar, Telangana",
   shortLocation: "Rameshwaram · Shadnagar",
@@ -104,7 +103,7 @@ export const MAGNUS = {
   mapsEmbed:
     "https://www.google.com/maps?q=Rameshwaram+Temple,+Shadnagar,+Telangana&z=12&output=embed",
   overview:
-    "Magnus Smart City is a premium plotted community by Mugdha Realty at Rameshwaram, near Shadnagar on the Hyderabad–Bangalore NH-44 corridor. Planned around Vastu-compliant plots, wide CC roads and a signature clubhouse, it is being delivered in phases — each with its own HMDA layout permission and TG RERA registration.",
+    "Magnus Smart City is a premium plotted community by Antera Realty at Rameshwaram, near Shadnagar on the Hyderabad–Bangalore NH-44 corridor. Planned around Vastu-compliant plots, wide CC roads and a signature clubhouse, it is being delivered in phases — each with its own HMDA layout permission and TG RERA registration.",
   phases: [
     {
       id: "phase-1",
@@ -134,11 +133,7 @@ export const MAGNUS = {
           status: "approved",
           number: "0546/HMDA/SWDL/2025",
           detail: "16.31 acres — Phase 1",
-          source: "Magnus Smart City e-brochure",
-          document: {
-            label: "View e-brochure (PDF)",
-            href: "/assets/Magnus_SmartCity_E-Brochure.pdf",
-          },
+          source: "Magnus Smart City project brochure",
         },
       ] satisfies Approval[],
       pricing: {
@@ -177,8 +172,8 @@ export const MAGNUS = {
           label: "TG RERA Registration",
           status: "approved",
           number: "P02400011410",
-          detail: "Mugdha Magnus Smart City — Phase 2",
-          source: "Phase 2 RERA announcement creative (Mugdha Realty)",
+          detail: "Magnus Smart City — Phase 2",
+          source: "Official Phase 2 RERA announcement",
         },
         {
           authority: "HMDA",
@@ -186,7 +181,7 @@ export const MAGNUS = {
           status: "approved",
           number: "2522/HMDA/SWDL/2026",
           detail: "58.28 acres — Phase 2",
-          source: "Phase 2 LP approval creative (Mugdha Realty)",
+          source: "Official Phase 2 LP approval announcement",
         },
       ] satisfies Approval[],
       pricing: {
@@ -286,8 +281,8 @@ export const MAGNUS = {
     },
     {
       src: "/projects/magnus/clubhouse-render.webp",
-      alt: "Mugdha Clubhouse at Magnus Smart City",
-      caption: "Mugdha Clubhouse — render",
+      alt: "Magnus Clubhouse at Magnus Smart City",
+      caption: "Magnus Clubhouse — render",
       kind: "render",
     },
     {
@@ -330,13 +325,13 @@ export const MAGNUS = {
 } as const;
 
 /* ------------------------------------------------------------------ */
-/* MIRAI by Mugdha Realty                                              */
+/* MIRAI                                                               */
 /* ------------------------------------------------------------------ */
 
 export const MIRAI = {
   slug: "mirai",
   name: "Mirai",
-  developer: "Mugdha Realty",
+  developer: "Antera Realty",
   tagline: "Rooted in Faith. Built for Life.",
   location: "Near Rameshwaram, Shadnagar, Telangana",
   shortLocation: "Rameshwaram · Shadnagar",
@@ -346,7 +341,7 @@ export const MIRAI = {
   digitalLayoutUrl: "https://magnus2-dl.fly.dev/mirai-dl",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Rameshwaram+Temple+Shadnagar+Telangana",
   overview:
-    "Mirai is an intimate plotted community by Mugdha Realty, a short walk from the Rameshwaram temple near Shadnagar. A Vastu-based layout of 30 ft and 40 ft roads, a landscaped open area and social infrastructure — planned for families who want calm, connected everyday living.",
+    "Mirai is an intimate plotted community by Antera Realty, a short walk from the Rameshwaram temple near Shadnagar. A Vastu-based layout of 30 ft and 40 ft roads, a landscaped open area and social infrastructure — planned for families who want calm, connected everyday living.",
   approvals: [
     {
       authority: "HMDA",
@@ -386,7 +381,6 @@ export const MIRAI = {
       "Delay beyond 40 days will attract additional charges.",
       "Prices are subject to change without prior notice.",
     ],
-    image: "/projects/mirai/price-card-2026-03-21.webp",
   } satisfies PriceCard,
   locationHighlights: [
     "60 ft government road facing (100 ft proposed — HMDA)",
@@ -424,18 +418,6 @@ export const MIRAI = {
       caption: "Location map — brochure",
       kind: "map",
     },
-    {
-      src: "/projects/mirai/brochure-cover.webp",
-      alt: "Mirai brochure spread",
-      caption: "Mirai brochure",
-      kind: "creative",
-    },
-    {
-      src: "/projects/mirai/price-card-2026-03-21.webp",
-      alt: "Mirai price card dated 21 March 2026",
-      caption: "Price card — 21 Mar 2026",
-      kind: "creative",
-    },
   ] satisfies Media[],
 } as const;
 
@@ -463,13 +445,13 @@ export const PORTFOLIO: PortfolioItem[] = [
   {
     id: "magnus-phase-1",
     name: "Magnus Smart City — Phase 1",
-    developer: "Mugdha Realty",
+    developer: "Antera Realty",
     href: "/projects/magnus-smart-city#phase-1",
     location: MAGNUS.shortLocation,
     status: "Open for booking",
     priceFrom: `${formatINR(16999)} / sq. yd.`,
     image: "/projects/magnus/clubhouse-render.webp",
-    imageAlt: "Mugdha Clubhouse render, Magnus Smart City",
+    imageAlt: "Magnus Clubhouse render, Magnus Smart City",
     blurb: "16.31 acres · 215 Vastu-compliant villa plots · residential & commercial blocks.",
     badges: ["TG RERA P02400010251", "HMDA LP 0546/HMDA/SWDL/2025"],
     featured: true,
@@ -478,7 +460,7 @@ export const PORTFOLIO: PortfolioItem[] = [
   {
     id: "magnus-phase-2",
     name: "Magnus Smart City — Phase 2",
-    developer: "Mugdha Realty",
+    developer: "Antera Realty",
     href: "/projects/magnus-smart-city#phase-2",
     location: MAGNUS.shortLocation,
     status: "Newly launched",
@@ -493,7 +475,7 @@ export const PORTFOLIO: PortfolioItem[] = [
   {
     id: "mirai",
     name: "Mirai",
-    developer: "Mugdha Realty",
+    developer: "Antera Realty",
     href: "/projects/mirai",
     location: MIRAI.shortLocation,
     status: "HMDA approved · RERA awaited",
@@ -553,7 +535,6 @@ export const WA_MESSAGES = {
     "Hi Antera Realty, I'm interested in Magnus Smart City Phase 1. Please share plot availability and pricing.",
   magnus2:
     "Hi Antera Realty, I'm interested in Magnus Smart City Phase 2 (RERA P02400011410). Please share plot availability and pricing.",
-  mirai:
-    "Hi Antera Realty, I'm interested in Mirai by Mugdha Realty. Please share plot availability and pricing.",
+  mirai: "Hi Antera Realty, I'm interested in Mirai. Please share plot availability and pricing.",
   siteVisit: "Hi Antera Realty, I'd like to book a site visit. Please share available slots.",
 } as const;

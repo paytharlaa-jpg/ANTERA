@@ -7,7 +7,6 @@ import {
   Cable,
   CloudRain,
   Compass,
-  Download,
   Droplets,
   Lamp,
   Route as RouteIcon,
@@ -70,8 +69,8 @@ const FAQS: Faq[] = [
     a: "Booking amount ₹1,00,000; 100% of the total amount (less booking) within 30 days. The SRO (registration) value is ₹4,200 per sq. yd. Delays beyond 40 days attract additional charges.",
   },
   {
-    q: "Who is the developer of Magnus Smart City?",
-    a: "Magnus Smart City is developed by Mugdha Realty. Antera Realty assists buyers with project information, site visits and the booking process.",
+    q: "Who can help me buy at Magnus Smart City?",
+    a: "Magnus Smart City is presented by Antera Realty. Our team assists buyers with project information, site visits and the booking process.",
   },
 ];
 
@@ -98,7 +97,7 @@ export function MagnusPage() {
           logoAlt="Magnus Smart City"
           eyebrow={
             <span className="flex flex-wrap items-center gap-3 text-[0.68rem] font-semibold uppercase tracking-[0.22em] text-champagne">
-              By Mugdha Realty <span className="h-px w-6 bg-current opacity-60" /> {MAGNUS.location}
+              By Antera Realty <span className="h-px w-6 bg-current opacity-60" /> {MAGNUS.location}
             </span>
           }
           title="The blueprint for a beautiful life."
@@ -124,14 +123,6 @@ export function MagnusPage() {
         >
           <a href="#phases" className={buttonClass("accent")}>
             View Phase 1 &amp; Phase 2
-          </a>
-          <a
-            href={MAGNUS.brochure}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonClass("ghost-dark")}
-          >
-            <Download className="h-4 w-4" /> E-brochure
           </a>
         </ProjectHero>
 
@@ -231,7 +222,7 @@ export function MagnusPage() {
             <div className="flex flex-col gap-8 lg:col-span-5">
               <SectionHeading
                 tone="dark"
-                eyebrow="Mugdha Clubhouse"
+                eyebrow="Magnus Clubhouse"
                 title="The heartbeat of your home."
                 copy="A signature clubhouse planned for the proposed 75+ acre Magnus community. Facilities as listed in the project e-brochure."
               />
@@ -252,7 +243,7 @@ export function MagnusPage() {
               <MaskReveal className="relative aspect-[16/10] rounded-[2rem]">
                 <ParallaxImage
                   src="/projects/magnus/clubhouse-render.webp"
-                  alt="Mugdha Clubhouse, Magnus Smart City — architectural render"
+                  alt="Magnus Clubhouse, Magnus Smart City — architectural render"
                   className="absolute inset-0"
                   strength={8}
                 />
@@ -288,7 +279,7 @@ export function MagnusPage() {
             <SectionHeading
               eyebrow="Gallery"
               title="Magnus, in pictures and plans."
-              copy="Renders are representational. Layout plans, price cards and approval creatives are reproduced from Mugdha Realty’s official material."
+              copy="Renders are representational. Layout plans, price cards and approval creatives are reproduced from the official project material."
             />
             <div className="mt-12">
               <GalleryGrid items={MAGNUS.gallery as unknown as Media[]} onOpen={gallery.open} />

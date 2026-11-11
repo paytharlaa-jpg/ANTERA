@@ -5,7 +5,7 @@ import { MagnusPage } from "@/components/projects/magnus-page";
 const TITLE =
   "Magnus Smart City Phase 1 & Phase 2, Shadnagar | TG RERA P02400011410 | Antera Realty";
 const DESCRIPTION =
-  "Magnus Smart City by Mugdha Realty at Rameshwaram, Shadnagar. Phase 2: 58.28 acres, TG RERA P02400011410, HMDA LP 2522/HMDA/SWDL/2026. Phase 1: 16.31 acres, TG RERA P02400010251. Villa plots from ₹16,999/sq. yd.";
+  "Magnus Smart City by Antera Realty at Rameshwaram, Shadnagar. Phase 2: 58.28 acres, TG RERA P02400011410, HMDA LP 2522/HMDA/SWDL/2026. Phase 1: 16.31 acres, TG RERA P02400010251. Villa plots from ₹16,999/sq. yd.";
 const URL = "https://anterarealty.com/projects/magnus-smart-city";
 
 export const Route = createFileRoute("/projects/magnus-smart-city")({

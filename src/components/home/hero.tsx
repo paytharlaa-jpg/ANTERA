@@ -17,7 +17,7 @@ const SLIDES = [
   },
   {
     src: "/projects/magnus/clubhouse-render.webp",
-    project: "Mugdha Clubhouse, Magnus",
+    project: "Magnus Clubhouse, Magnus",
     place: "Rameshwaram · Shadnagar",
     pos: "50% 55%",
   },

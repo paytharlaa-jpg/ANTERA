@@ -40,7 +40,7 @@ export function ApprovalsSection() {
       items: p2.approvals.map((a, i) => ({ a, creative: i })),
     },
     {
-      title: "Mirai by Mugdha Realty",
+      title: "Mirai by Antera Realty",
       meta: MIRAI.extent,
       items: MIRAI.approvals.map((a) => ({ a })),
     },
