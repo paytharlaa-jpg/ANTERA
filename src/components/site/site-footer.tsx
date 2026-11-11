@@ -1,134 +1,206 @@
 "use client";
 
-import { ASSETS } from "@/lib/assets";
-import { BRAND, DISCLAIMER } from "@/lib/antera-data";
+import { ContourBackground } from "@/components/site/contour-background";
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
 
-const EXPLORE = [
-  { label: "Home", href: "/" },
-  { label: "About Us", href: "/#about" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Avatar 2", href: "/projects/avatar-2" },
-  { label: "Marvel Smart City", href: "/projects/marvel-smart-city" },
-  { label: "Magnus Smart City", href: "/projects/magnus-smart-city" },
-  { label: "Locations", href: "/#location" },
-  { label: "Site Visit", href: "tel:+919985358899" },
-  { label: "Contact", href: "tel:+919985358899" },
+import { DISCLAIMER } from "@/lib/antera-data";
+import { ASSETS } from "@/lib/assets";
+import { CONTACT, MAGNUS, PORTFOLIO, WA_MESSAGES, whatsappLink } from "@/lib/projects";
+import { Reveal } from "./motion-primitives";
+import { WhatsAppIcon } from "./floating-whatsapp";
+
+const COMPANY = [
+  { label: "About Antera", href: "/#about" },
+  { label: "Approvals", href: "/#approvals" },
+  { label: "Location", href: "/#location" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "Insights & Blog", href: "/blog" },
+  { label: "Book a Site Visit", href: "/#enquire" },
 ];
 
-const BROCHURES = [
-  { label: "Avatar 2 Presentation", href: ASSETS.docs.avatar2Deck },
-  { label: "Avatar 2 Price Structure", href: ASSETS.docs.avatar2Price },
-  { label: "Marvel Smart City Brochure", href: ASSETS.docs.marvelBrochure },
-  { label: "Magnus Smart City E-Brochure", href: ASSETS.docs.magnusBrochure },
-  { label: "Magnus TG RERA Certificate", href: ASSETS.docs.magnusRera },
+const DOCUMENTS = [
+  { label: "Magnus Smart City e-brochure", href: MAGNUS.brochure },
+  {
+    label: "Magnus Phase 1 — TG RERA certificate",
+    href: "/assets/TG_RERA_APPROVED_CERTIFICATE-8.pdf",
+  },
+  { label: "Avatar 2 presentation", href: ASSETS.docs.avatar2Deck },
+  { label: "Avatar 2 price structure", href: ASSETS.docs.avatar2Price },
+];
+
+const LEGAL = [
+  { label: "Privacy Policy", href: "/legal#privacy" },
+  { label: "Terms of Use", href: "/legal#terms" },
+  { label: "Disclaimer", href: "/legal#disclaimer" },
+];
+
+const LEADERS = [
+  {
+    name: "Nagunuri Raju",
+    role: "Founder",
+    phone: "+91 95607 76917",
+    raw: "+919560776917",
+    img: "/team/founder.png",
+  },
+  {
+    name: "Vamshi Krishna",
+    role: "Co-founder",
+    phone: "+91 96187 82108",
+    raw: "+919618782108",
+    img: "/team/cofounder.jpg",
+  },
 ];
 
 export function SiteFooter() {
   return (
-    <footer className="relative bg-charcoal px-6 pb-10 pt-20 text-primary-foreground">
-      <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-2 lg:grid-cols-5">
-        
-        {/* Company & Leadership Column */}
-        <div className="flex flex-col gap-10 md:col-span-2 lg:col-span-2">
-          {/* Logo & Info */}
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-3">
-              <img src={ASSETS.anteraLogo} alt="" className="h-12 w-12 rounded-lg bg-primary-foreground p-1" />
-              <span className="flex flex-col">
-                <span className="display-title text-base tracking-[0.12em]">ANTERA REALTY</span>
-                <span className="font-mono text-[0.58rem] uppercase tracking-[0.16em] text-primary-foreground/55">
-                  {BRAND.tagline}
+    <footer className="relative overflow-hidden bg-ink text-primary-foreground">
+      <div aria-hidden className="grain pointer-events-none absolute inset-0" />
+      <ContourBackground color="rgba(201,164,99,0.12)" accent="rgba(201,164,99,0.28)" />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-40 left-1/2 h-80 w-[60rem] -translate-x-1/2 rounded-full bg-champagne/10 blur-3xl"
+      />
+
+      <div className="container-x relative pt-20 sm:pt-28">
+        <Reveal className="flex flex-col justify-between gap-10 border-b border-primary-foreground/10 pb-16 lg:flex-row lg:items-end">
+          <div className="flex max-w-2xl flex-col gap-6">
+            <span className="flex items-center gap-4">
+              <img src="/projects/brand/antera-mark-light.png" alt="" className="h-14 w-auto" />
+              <span className="flex flex-col leading-none">
+                <span className="text-xl font-semibold tracking-[0.34em]">ANTERA</span>
+                <span className="mt-1.5 text-[0.62rem] font-semibold tracking-[0.55em] text-champagne">
+                  REALTY
                 </span>
               </span>
+            </span>
+            <p className="font-display text-3xl font-light leading-tight text-primary-foreground/90 sm:text-4xl">
+              Shaping spaces, building futures — with clarity at every step.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href={whatsappLink(WA_MESSAGES.general)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-full bg-[#25D366] px-6 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-white"
+            >
+              <WhatsAppIcon className="h-4 w-4" /> WhatsApp
+            </a>
+            <a
+              href={`tel:${CONTACT.phoneRaw}`}
+              className="inline-flex min-h-12 items-center gap-2.5 rounded-full border border-primary-foreground/25 px-6 text-[0.72rem] font-semibold uppercase tracking-[0.14em] hover:border-champagne"
+            >
+              <Phone className="h-4 w-4" /> {CONTACT.phoneDisplay}
+            </a>
+          </div>
+        </Reveal>
+
+        <div className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-12">
+          <div className="flex flex-col gap-6 lg:col-span-4">
+            <FooterHeading>Visit our office</FooterHeading>
+            <p className="flex gap-3 text-sm leading-relaxed text-primary-foreground/70">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-champagne" /> {CONTACT.office}
+            </p>
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className="flex items-center gap-3 text-sm text-primary-foreground/70 hover:text-champagne"
+            >
+              <Mail className="h-4 w-4 text-champagne" /> {CONTACT.email}
+            </a>
+            <div className="mt-2 flex flex-col gap-4">
+              <FooterHeading>Leadership</FooterHeading>
+              {LEADERS.map((l) => (
+                <div key={l.name} className="flex items-center gap-4">
+                  <img
+                    src={l.img}
+                    alt={l.name}
+                    loading="lazy"
+                    className="h-12 w-12 rounded-full border border-primary-foreground/15 object-cover"
+                  />
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-sm font-semibold">{l.name}</span>
+                    <span className="text-[0.65rem] uppercase tracking-[0.18em] text-primary-foreground/50">
+                      {l.role}
+                    </span>
+                    <a
+                      href={`tel:${l.raw}`}
+                      className="text-xs text-champagne hover:text-primary-foreground"
+                    >
+                      {l.phone}
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
-            <p className="text-sm text-primary-foreground/60 max-w-sm">{BRAND.location}</p>
           </div>
 
-          {/* Leadership Team */}
-          <div className="flex flex-col gap-6">
-            <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-accent">Leadership Team</span>
-            
-            <div className="flex flex-col sm:flex-row gap-8">
-              {/* Founder */}
-              <div className="flex items-center gap-4">
-                <div className="h-14 w-14 overflow-hidden rounded-full border-2 border-primary-foreground/10 bg-black/20 shrink-0">
-                  <img 
-                    src="/team/founder.png" 
-                    alt="Nagunuri Raju" 
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-sm font-bold text-primary-foreground">Nagunuri Raju</span>
-                  <span className="text-[10px] uppercase tracking-widest text-primary-foreground/50 mb-1">Founder</span>
-                  <a href="tel:+919560776917" className="text-xs font-semibold text-accent hover:text-white transition-colors">
-                    +91 9560776917
-                  </a>
-                </div>
-              </div>
-
-              {/* Co-Founder */}
-              <div className="flex items-center gap-4">
-                <div className="h-14 w-14 overflow-hidden rounded-full border-2 border-primary-foreground/10 bg-black/20 shrink-0">
-                  <img 
-                    src="/team/cofounder.jpg" 
-                    alt="Vamshi Krishna" 
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-sm font-bold text-primary-foreground">Vamshi Krishna</span>
-                  <span className="text-[10px] uppercase tracking-widest text-primary-foreground/50 mb-1">Co-founder</span>
-                  <a href="tel:+919618782108" className="text-xs font-semibold text-accent hover:text-white transition-colors">
-                    +91 9618782108
-                  </a>
-                </div>
-              </div>
-            </div>
+          <FooterList
+            title="Projects"
+            className="lg:col-span-3"
+            links={PORTFOLIO.map((p) => ({ label: p.name, href: p.href }))}
+          />
+          <FooterList title="Company" className="lg:col-span-2" links={COMPANY} />
+          <div className="flex flex-col gap-10 lg:col-span-3">
+            <FooterList title="Documents" links={DOCUMENTS} download />
+            <FooterList title="Legal" links={LEGAL} />
           </div>
         </div>
 
-        <nav className="flex flex-col gap-3" aria-label="Footer navigation">
-          <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-accent">Explore</span>
-          {EXPLORE.map((link) => (
+        <div className="flex flex-col gap-5 border-t border-primary-foreground/10 py-10">
+          <p className="max-w-5xl text-[0.72rem] leading-relaxed text-primary-foreground/45">
+            {DISCLAIMER} RERA registration details can be verified at{" "}
             <a
-              key={link.label}
-              href={link.href}
-              className="text-sm text-primary-foreground/70 transition-colors hover:text-accent"
+              href={CONTACT.reraPortal}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-champagne"
             >
-              {link.label}
+              rera.telangana.gov.in
             </a>
-          ))}
-        </nav>
-
-        <div className="flex flex-col gap-3">
-          <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-accent">Brochures</span>
-          {BROCHURES.map((doc) => (
-            <a
-              key={doc.label}
-              href={doc.href}
-              download=""
-              className="text-sm text-primary-foreground/70 transition-colors hover:text-accent"
-            >
-              {doc.label}
-            </a>
-          ))}
+            .
+          </p>
+          <div className="flex flex-col justify-between gap-3 text-[0.72rem] text-primary-foreground/45 sm:flex-row">
+            <span>© {new Date().getFullYear()} Antera Realty. All rights reserved.</span>
+            <span>Magnus Smart City and Mirai are developments of Mugdha Realty.</span>
+          </div>
         </div>
-
-        <div className="flex flex-col gap-3">
-          <span className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-accent">Legal</span>
-          <span className="text-sm text-primary-foreground/70 cursor-pointer hover:text-accent transition-colors">Privacy Policy</span>
-          <span className="text-sm text-primary-foreground/70 cursor-pointer hover:text-accent transition-colors">Terms &amp; Conditions</span>
-          <span className="text-sm text-primary-foreground/70 cursor-pointer hover:text-accent transition-colors">Disclaimer</span>
-        </div>
-      </div>
-
-      <div className="mx-auto mt-16 max-w-7xl border-t border-primary-foreground/10 pt-8 flex flex-col md:flex-row justify-between gap-4">
-        <p className="max-w-4xl text-[0.7rem] leading-relaxed text-primary-foreground/45">{DISCLAIMER}</p>
-        <p className="text-[0.7rem] text-primary-foreground/45 shrink-0">
-          Copyright &copy; 2026 {BRAND.name}. All rights reserved.
-        </p>
       </div>
     </footer>
+  );
+}
+
+function FooterHeading({ children }: { children: string }) {
+  return <span className="eyebrow text-champagne">{children}</span>;
+}
+
+function FooterList({
+  title,
+  links,
+  className,
+  download,
+}: {
+  title: string;
+  links: { label: string; href: string }[];
+  className?: string;
+  download?: boolean;
+}) {
+  return (
+    <nav className={`flex flex-col gap-4 ${className ?? ""}`} aria-label={title}>
+      <FooterHeading>{title}</FooterHeading>
+      <ul className="flex flex-col gap-3">
+        {links.map((l) => (
+          <li key={l.label}>
+            <a
+              href={l.href}
+              {...(download ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              className="group inline-flex items-center gap-1.5 text-sm text-primary-foreground/70 transition-colors hover:text-primary-foreground"
+            >
+              {l.label}
+              <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }

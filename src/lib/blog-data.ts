@@ -17,7 +17,8 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: "isha-yoga-center-shabad-telangana-900-crore-project",
-    title: "Isha Yoga Center in Shabad: ₹900 Crore Mega Project Planned Across 300 Acres in Telangana",
+    title:
+      "Isha Yoga Center in Shabad: ₹900 Crore Mega Project Planned Across 300 Acres in Telangana",
     meta: "Telangana is set to welcome a proposed ₹900 crore Isha Yoga Center project in Shabad, Rangareddy district, featuring an Adiyogi statue, educational institutions, wellness facilities and potential employment opportunities.",
     date: "2026-10-23",
     updatedAt: "2026-10-23",
@@ -25,7 +26,8 @@ export const BLOG_POSTS: BlogPost[] = [
     category: "Project Updates",
     readTime: "5 min read",
     image: "/assets/isha-yoga-center-shabad.jpg",
-    excerpt: "Telangana is set to welcome a proposed ₹900 crore Isha Yoga Center across 300 acres in Shabad, Rangareddy district. Featuring an Adiyogi statue, educational institutions, and wellness facilities, the project is expected to create 14,000 employment opportunities.",
+    excerpt:
+      "Telangana is set to welcome a proposed ₹900 crore Isha Yoga Center across 300 acres in Shabad, Rangareddy district. Featuring an Adiyogi statue, educational institutions, and wellness facilities, the project is expected to create 14,000 employment opportunities.",
     content: `
       <div class="answer rounded-2xl bg-orange-50/80 p-6 md:p-8 border-l-4 border-orange-500 mb-8 shadow-sm">
         <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-orange-600 mb-2">
@@ -274,7 +276,7 @@ export const BLOG_POSTS: BlogPost[] = [
           <span class="text-xs bg-stone-100 text-stone-700 px-3 py-1.5 rounded-full font-medium">Shabad real estate development</span>
         </div>
       </div>
-    `
+    `,
   },
   {
     slug: "is-srisailam-highway-good-for-plot-investment-2026",
@@ -285,7 +287,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Nagunuri Raju",
     category: "Buying Guides",
     readTime: "4 min read",
-    excerpt: "It can suit buyers with a 5 to 10 year view and a budget that does not depend on a quick resale. Demand along the corridor is being driven by the planned Bharat Future City...",
+    excerpt:
+      "It can suit buyers with a 5 to 10 year view and a budget that does not depend on a quick resale. Demand along the corridor is being driven by the planned Bharat Future City...",
     content: `
       <div class="answer rounded-lg bg-orange-50 p-6 border-l-4 border-orange-500 mb-8">
         <p class="text-orange-900 font-medium"><strong>Short answer:</strong> It can suit buyers with a 5 to 10 year view and a budget that does not depend on a quick resale. Demand along the corridor is being driven by the planned Bharat Future City, the Regional Ring Road and new employers such as Amazon's data center. Prices already reflect some of that. Verify the approval, the title and the road access of any plot before you pay.</p>
@@ -322,7 +325,7 @@ export const BLOG_POSTS: BlogPost[] = [
       </div>
       
       <p class="text-xs text-gray-500 mt-8 italic">This article is general information, not financial or legal advice. Prices and plans change. Verify approvals independently.</p>
-    `
+    `,
   },
   {
     slug: "bharat-future-city-hyderabad-growth-engine",
@@ -333,7 +336,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Vamshi Krishna",
     category: "Future City",
     readTime: "5 min read",
-    excerpt: "With a staggering 30,000-acre core master plan, the government's push for a fourth city is rapidly pulling institutional investment and real estate demand toward southern Hyderabad...",
+    excerpt:
+      "With a staggering 30,000-acre core master plan, the government's push for a fourth city is rapidly pulling institutional investment and real estate demand toward southern Hyderabad...",
     content: `
       <div class="answer rounded-lg bg-orange-50 p-6 border-l-4 border-orange-500 mb-8">
         <p class="text-orange-900 font-medium"><strong>Executive Summary:</strong> The Telangana government's announcement of "Bharat Future City" (the fourth city of Hyderabad) is shifting real estate focus toward the Srisailam Highway corridor. Anchored by major institutional investments like the proposed TCS AI Hub and Amazon Data Centers, this 30,000-acre project aims to transform the southern quadrant into a massive economic zone.</p>
@@ -355,7 +359,7 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <h3 class="text-2xl font-bold mt-8 mb-4">A Word of Caution</h3>
       <p class="mb-4">While the potential is massive, buyers must remember that mega-projects take time. This is a 5 to 10-year hold. If you are looking for overnight flipping, this market may not be for you. Always ensure the plots you buy are HMDA/DTCP approved and legally clear.</p>
-    `
+    `,
   },
   {
     slug: "srisailam-highway-vs-shadnagar-investment",
@@ -366,7 +370,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Nagunuri Raju",
     category: "Buying Guides",
     readTime: "6 min read",
-    excerpt: "Two of southern Hyderabad's most active real estate corridors compared. Should you invest near the industrial hub of Shadnagar or the upcoming IT corridor of Srisailam Highway?",
+    excerpt:
+      "Two of southern Hyderabad's most active real estate corridors compared. Should you invest near the industrial hub of Shadnagar or the upcoming IT corridor of Srisailam Highway?",
     content: `
       <p class="mb-4">For buyers looking to invest in open plots in South Hyderabad, the decision often comes down to two major corridors: <strong>Srisailam Highway</strong> and <strong>Shadnagar (Bengaluru Highway)</strong>. Both offer excellent long-term potential, but they cater to very different growth stories.</p>
 
@@ -389,7 +394,7 @@ export const BLOG_POSTS: BlogPost[] = [
         <p class="text-sm text-gray-600 mb-4">Our experts at Antera Realty can walk you through the data for both regions.</p>
         <a href="tel:+919985358899" class="inline-block bg-black text-white px-6 py-3 rounded-full text-sm font-bold uppercase tracking-widest hover:bg-orange-500 transition-colors">Talk to an Expert</a>
       </div>
-    `
+    `,
   },
   {
     slug: "5-critical-checks-buying-open-plots-hyderabad",
@@ -400,7 +405,8 @@ export const BLOG_POSTS: BlogPost[] = [
     author: "Vamshi Krishna",
     category: "Buying Guides",
     readTime: "4 min read",
-    excerpt: "Investing in land is lucrative, but it comes with risks. Learn how to verify HMDA approvals, check encumbrance certificates, and protect your real estate investment.",
+    excerpt:
+      "Investing in land is lucrative, but it comes with risks. Learn how to verify HMDA approvals, check encumbrance certificates, and protect your real estate investment.",
     content: `
       <p class="mb-4">Investing in open plots around Hyderabad’s booming corridors is a great way to build wealth. However, the market is flooded with unapproved layouts and false promises. At Antera Realty, we strictly deal with verified properties. Here are 5 non-negotiable checks you must perform before writing a cheque.</p>
 
@@ -421,6 +427,6 @@ export const BLOG_POSTS: BlogPost[] = [
 
       <hr class="my-8 border-gray-200" />
       <p class="text-sm text-gray-600 italic">At Antera Realty, we do this heavy lifting for you. We only recommend projects that pass our stringent 30-point legal and physical verification process.</p>
-    `
-  }
+    `,
+  },
 ];

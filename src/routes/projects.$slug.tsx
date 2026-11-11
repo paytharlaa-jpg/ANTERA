@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 
-import { ProjectPage } from "@/components/site/project-page";
+import { LegacyProjectPage } from "@/components/projects/legacy-page";
 import { PROJECTS, type ProjectSlug } from "@/lib/antera-data";
 
 function findProject(slug: string) {
@@ -16,7 +16,10 @@ export const Route = createFileRoute("/projects/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Project not found - Antera Realty" }, { name: "robots", content: "noindex" }],
+        meta: [
+          { title: "Project not found - Antera Realty" },
+          { name: "robots", content: "noindex" },
+        ],
       };
     }
     const title = `${loaderData.name} - Antera Realty`;
@@ -27,8 +30,10 @@ export const Route = createFileRoute("/projects/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: loaderData.tagline },
         { property: "og:type", content: "website" },
+        { property: "og:url", content: `https://anterarealty.com/projects/${loaderData.slug}` },
         { name: "twitter:card", content: "summary_large_image" },
       ],
+      links: [{ rel: "canonical", href: `https://anterarealty.com/projects/${loaderData.slug}` }],
     };
   },
   notFoundComponent: ProjectNotFound,
@@ -37,7 +42,7 @@ export const Route = createFileRoute("/projects/$slug")({
 
 function ProjectRoute() {
   const { slug } = Route.useLoaderData();
-  return <ProjectPage slug={slug as ProjectSlug} />;
+  return <LegacyProjectPage slug={slug as ProjectSlug} />;
 }
 
 function ProjectNotFound() {

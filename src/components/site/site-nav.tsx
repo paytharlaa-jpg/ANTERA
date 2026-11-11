@@ -1,107 +1,334 @@
 "use client";
 
-import { motion, useMotionValueEvent, useScroll } from "motion/react";
-import { Menu, MessageCircle, X } from "lucide-react";
-import { useState } from "react";
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "motion/react";
+import { ArrowUpRight, ChevronDown, Menu, Phone, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
-import { ASSETS } from "@/lib/assets";
-import { BRAND, NAV_LINKS } from "@/lib/antera-data";
+import { CONTACT, PORTFOLIO } from "@/lib/projects";
+import { lockScroll } from "@/lib/smooth-scroll";
 import { cn } from "@/lib/utils";
+import { EASE } from "./motion-primitives";
 
-export function SiteNav() {
+const LINKS = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/#about" },
+  { label: "Projects", href: "/#projects", menu: true },
+  { label: "Location", href: "/#location" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "Insights", href: "/blog" },
+  { label: "Contact", href: "/#contact" },
+] as const;
+
+/**
+ * `overlay` — the nav starts transparent over a dark hero and turns solid on scroll.
+ * Pages without a dark hero pass `overlay={false}` to start solid.
+ */
+export function SiteNav({ overlay = true }: { overlay?: boolean }) {
   const { scrollY } = useScroll();
-  const [solid, setSolid] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [menu, setMenu] = useState(false);
+  const menuTimer = useRef<number | undefined>(undefined);
 
-  useMotionValueEvent(scrollY, "change", (latest) => setSolid(latest > 40));
+  useMotionValueEvent(scrollY, "change", (latest) => setScrolled(latest > 24));
+
+  useEffect(() => {
+    if (!open) return;
+    lockScroll(true);
+    return () => lockScroll(false);
+  }, [open]);
+
+  const solid = scrolled || !overlay;
+  const light = !solid; // light text over hero
+
+  const openMenu = () => {
+    window.clearTimeout(menuTimer.current);
+    setMenu(true);
+  };
+  const closeMenu = () => {
+    menuTimer.current = window.setTimeout(() => setMenu(false), 140);
+  };
 
   return (
-    <motion.header
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-      className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6"
-    >
-      <nav
+    <>
+      <motion.header
+        initial={{ y: -24, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.9, ease: EASE, delay: 0.1 }}
         className={cn(
-          "mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-4 py-3 transition-all duration-500 sm:px-5",
-          solid ? "glass-panel nav-shadow" : "bg-transparent",
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter,border-color] duration-500",
+          solid
+            ? "border-b border-foreground/[0.06] bg-background/85 shadow-[0_10px_40px_-30px_rgb(17_26_46/0.6)] backdrop-blur-xl"
+            : "border-b border-transparent bg-gradient-to-b from-black/35 to-transparent",
         )}
       >
-        <a href="/" className="flex items-center gap-2.5">
-          <img src={ASSETS.anteraLogo} alt="Antera Realty" className="h-10 w-10 object-contain" />
-          <span className="flex flex-col leading-none">
-            <span className="display-title text-sm tracking-[0.14em]">{BRAND.wordmark} REALTY</span>
-            <span className="mt-1 font-mono text-[0.55rem] uppercase tracking-[0.16em] text-muted-foreground">
-              {BRAND.tagline}
-            </span>
-          </span>
-        </a>
-
-        <div className="hidden items-center gap-6 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-foreground/70 transition-colors hover:text-accent"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-2">
-          <a
-            href="tel:+919985358899"
-            className="hidden rounded-full bg-accent px-5 py-2.5 text-[0.66rem] font-semibold uppercase tracking-[0.16em] text-accent-foreground transition-transform duration-300 hover:scale-105 md:inline-flex"
-          >
-            Book a Site Visit &rarr;
-          </a>
-          <button
-            type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card/70 lg:hidden"
-          >
-            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-          </button>
-        </div>
-      </nav>
-
-      {open ? (
-        <motion.div
-          initial={{ opacity: 0, y: -8 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glass-panel mx-auto mt-2 flex max-w-6xl flex-col gap-1 rounded-2xl p-3 lg:hidden"
+        <nav
+          className="container-x flex h-[4.5rem] items-center justify-between gap-6 lg:h-20"
+          aria-label="Main"
         >
-          {NAV_LINKS.map((link) => (
+          <a href="/" className="flex shrink-0 items-center gap-3" aria-label="Antera Realty home">
+            <img
+              src={
+                light ? "/projects/brand/antera-mark-light.png" : "/projects/brand/antera-mark.png"
+              }
+              alt=""
+              width={44}
+              height={40}
+              className="h-9 w-auto lg:h-10"
+            />
+            <span className="flex flex-col leading-none">
+              <span
+                className={cn(
+                  "text-[0.95rem] font-semibold tracking-[0.32em] transition-colors",
+                  light ? "text-primary-foreground" : "text-foreground",
+                )}
+              >
+                ANTERA
+              </span>
+              <span
+                className={cn(
+                  "mt-1 text-[0.56rem] font-semibold tracking-[0.5em] transition-colors",
+                  light ? "text-champagne" : "text-accent",
+                )}
+              >
+                REALTY
+              </span>
+            </span>
+          </a>
+
+          <ul className="hidden items-center gap-1 lg:flex">
+            {LINKS.map((link) =>
+              "menu" in link ? (
+                <li
+                  key={link.label}
+                  className="relative"
+                  onMouseEnter={openMenu}
+                  onMouseLeave={closeMenu}
+                >
+                  <button
+                    type="button"
+                    aria-expanded={menu}
+                    aria-haspopup="true"
+                    onClick={() => setMenu((v) => !v)}
+                    onFocus={openMenu}
+                    className={cn(
+                      "flex items-center gap-1.5 rounded-full px-4 py-2 text-[0.8rem] font-medium transition-colors",
+                      light
+                        ? "text-primary-foreground/85 hover:text-primary-foreground"
+                        : "text-foreground/75 hover:text-foreground",
+                    )}
+                  >
+                    {link.label}
+                    <ChevronDown
+                      className={cn(
+                        "h-3.5 w-3.5 transition-transform duration-300",
+                        menu && "rotate-180",
+                      )}
+                    />
+                  </button>
+                  <AnimatePresence>
+                    {menu ? (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 6, scale: 0.98 }}
+                        transition={{ duration: 0.35, ease: EASE }}
+                        className="absolute left-1/2 top-full w-[40rem] -translate-x-1/2 pt-3"
+                      >
+                        <div className="grid grid-cols-[1.25fr_1fr] gap-2 overflow-hidden rounded-3xl border border-foreground/[0.07] bg-card p-2 shadow-[0_30px_80px_-30px_rgb(17_26_46/0.45)]">
+                          <div className="flex flex-col gap-1 p-2">
+                            <span className="eyebrow px-3 pb-2 pt-1 text-champagne-deep">
+                              Featured developments
+                            </span>
+                            {PORTFOLIO.filter((p) => p.featured).map((p) => (
+                              <a
+                                key={p.id}
+                                href={p.href}
+                                onClick={() => setMenu(false)}
+                                className="group flex items-center gap-4 rounded-2xl p-2.5 transition-colors hover:bg-surface"
+                              >
+                                <span className="h-14 w-16 shrink-0 overflow-hidden rounded-xl bg-surface">
+                                  <img
+                                    src={p.image}
+                                    alt=""
+                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                    loading="lazy"
+                                  />
+                                </span>
+                                <span className="flex min-w-0 flex-col gap-0.5">
+                                  <span className="truncate text-sm font-semibold text-foreground">
+                                    {p.name}
+                                  </span>
+                                  <span className="truncate text-xs text-muted-foreground">
+                                    {p.status}
+                                  </span>
+                                </span>
+                              </a>
+                            ))}
+                          </div>
+                          <div className="flex flex-col justify-between gap-4 rounded-[1.25rem] bg-ink p-5 text-primary-foreground">
+                            <div className="flex flex-col gap-1">
+                              <span className="eyebrow pb-2 text-champagne">More from Antera</span>
+                              {PORTFOLIO.filter((p) => !p.featured).map((p) => (
+                                <a
+                                  key={p.id}
+                                  href={p.href}
+                                  onClick={() => setMenu(false)}
+                                  className="flex items-center justify-between rounded-lg py-2 text-sm text-primary-foreground/80 transition-colors hover:text-champagne"
+                                >
+                                  {p.name}
+                                  <ArrowUpRight className="h-3.5 w-3.5" />
+                                </a>
+                              ))}
+                            </div>
+                            <a
+                              href="/#projects"
+                              onClick={() => setMenu(false)}
+                              className="text-xs font-semibold uppercase tracking-[0.16em] text-champagne hover:text-primary-foreground"
+                            >
+                              View all projects →
+                            </a>
+                          </div>
+                        </div>
+                      </motion.div>
+                    ) : null}
+                  </AnimatePresence>
+                </li>
+              ) : (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className={cn(
+                      "relative rounded-full px-4 py-2 text-[0.8rem] font-medium transition-colors after:absolute after:inset-x-4 after:bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-current after:transition-transform after:duration-500 hover:after:scale-x-100",
+                      light
+                        ? "text-primary-foreground/85 hover:text-primary-foreground"
+                        : "text-foreground/75 hover:text-foreground",
+                    )}
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ),
+            )}
+          </ul>
+
+          <div className="flex items-center gap-2">
             <a
-              key={link.href}
-              href={link.href}
-              onClick={() => setOpen(false)}
-              className="rounded-xl px-3 py-3 text-sm font-medium text-foreground/80 hover:bg-secondary"
+              href={`tel:${CONTACT.phoneRaw}`}
+              aria-label={`Call ${CONTACT.phoneDisplay}`}
+              className={cn(
+                "hidden h-11 w-11 items-center justify-center rounded-full border transition-colors sm:flex",
+                light
+                  ? "border-primary-foreground/25 text-primary-foreground hover:border-champagne"
+                  : "border-foreground/15 text-foreground hover:border-foreground/40",
+              )}
             >
-              {link.label}
+              <Phone className="h-4 w-4" />
             </a>
-          ))}
-          <a
-            href="tel:+919985358899"
-            onClick={() => setOpen(false)}
-            className="mt-1 rounded-xl bg-accent px-3 py-3 text-center text-sm font-semibold text-accent-foreground"
+            <a
+              href="/#enquire"
+              className="hidden min-h-11 items-center rounded-full bg-accent px-5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-accent-foreground transition-all hover:brightness-110 sm:inline-flex"
+            >
+              Enquire Now
+            </a>
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              aria-label="Open menu"
+              className={cn(
+                "flex h-11 w-11 items-center justify-center rounded-full border lg:hidden",
+                light
+                  ? "border-primary-foreground/25 text-primary-foreground"
+                  : "border-foreground/15 text-foreground",
+              )}
+            >
+              <Menu className="h-5 w-5" />
+            </button>
+          </div>
+        </nav>
+      </motion.header>
+
+      <AnimatePresence>
+        {open ? (
+          <motion.div
+            className="fixed inset-0 z-[60] flex flex-col bg-ink text-primary-foreground lg:hidden"
+            initial={{ clipPath: "inset(0 0 100% 0)" }}
+            animate={{ clipPath: "inset(0 0 0% 0)" }}
+            exit={{ clipPath: "inset(0 0 100% 0)" }}
+            transition={{ duration: 0.6, ease: EASE }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Menu"
           >
-            Book a Site Visit
-          </a>
-          <a
-            href={`https://wa.me/${BRAND.whatsapp}`}
-            target="_blank"
-            rel="noreferrer"
-            onClick={() => setOpen(false)}
-            className="inline-flex items-center justify-center gap-2 rounded-xl border border-border px-3 py-3 text-center text-sm font-semibold text-foreground"
-          >
-            <MessageCircle className="h-4 w-4" /> WhatsApp Us
-          </a>
-        </motion.div>
-      ) : null}
-    </motion.header>
+            <div className="container-x flex h-[4.5rem] items-center justify-between">
+              <span className="flex items-center gap-3">
+                <img src="/projects/brand/antera-mark-light.png" alt="" className="h-9 w-auto" />
+                <span className="text-sm font-semibold tracking-[0.32em]">ANTERA</span>
+              </span>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close menu"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-primary-foreground/20"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="container-x flex flex-1 flex-col justify-between gap-8 overflow-y-auto pb-8 pt-4">
+              <ul className="flex flex-col">
+                {LINKS.map((link, i) => (
+                  <motion.li
+                    key={link.label}
+                    initial={{ opacity: 0, y: 18 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15 + i * 0.05, duration: 0.6, ease: EASE }}
+                    className="border-b border-primary-foreground/10"
+                  >
+                    <a
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center justify-between py-4 font-display text-3xl font-light"
+                    >
+                      {link.label}
+                      <ArrowUpRight className="h-5 w-5 text-champagne" />
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+              <div className="flex flex-col gap-3">
+                <span className="eyebrow text-champagne">Developments</span>
+                <div className="flex flex-wrap gap-2">
+                  {PORTFOLIO.map((p) => (
+                    <a
+                      key={p.id}
+                      href={p.href}
+                      onClick={() => setOpen(false)}
+                      className="rounded-full border border-primary-foreground/15 px-4 py-2.5 text-xs text-primary-foreground/80"
+                    >
+                      {p.name}
+                    </a>
+                  ))}
+                </div>
+                <div className="mt-4 grid grid-cols-2 gap-3">
+                  <a
+                    href={`tel:${CONTACT.phoneRaw}`}
+                    className="flex min-h-12 items-center justify-center gap-2 rounded-full border border-primary-foreground/25 text-xs font-semibold uppercase tracking-[0.14em]"
+                  >
+                    <Phone className="h-4 w-4" /> Call
+                  </a>
+                  <a
+                    href="/#enquire"
+                    onClick={() => setOpen(false)}
+                    className="flex min-h-12 items-center justify-center rounded-full bg-accent text-xs font-semibold uppercase tracking-[0.14em] text-accent-foreground"
+                  >
+                    Enquire Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </>
   );
 }

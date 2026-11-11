@@ -10,13 +10,21 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LegalRouteImport } from './routes/legal'
 import { Route as BlogIndexRouteImport } from './routes/blog/index'
 import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as ProjectsSlugRouteImport } from './routes/projects.$slug'
+import { Route as ProjectsMagnusSmartCityRouteImport } from './routes/projects.magnus-smart-city'
+import { Route as ProjectsMiraiRouteImport } from './routes/projects.mirai'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRoute = LegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogIndexRoute = BlogIndexRouteImport.update({
@@ -34,38 +42,82 @@ const ProjectsSlugRoute = ProjectsSlugRouteImport.update({
   path: '/projects/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProjectsMagnusSmartCityRoute = ProjectsMagnusSmartCityRouteImport.update({
+  id: '/projects/magnus-smart-city',
+  path: '/projects/magnus-smart-city',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsMiraiRoute = ProjectsMiraiRouteImport.update({
+  id: '/projects/mirai',
+  path: '/projects/mirai',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/legal': typeof LegalRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/projects/magnus-smart-city': typeof ProjectsMagnusSmartCityRoute
+  '/projects/mirai': typeof ProjectsMiraiRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/legal': typeof LegalRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/projects/magnus-smart-city': typeof ProjectsMagnusSmartCityRoute
+  '/projects/mirai': typeof ProjectsMiraiRoute
   '/blog': typeof BlogIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/legal': typeof LegalRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/projects/$slug': typeof ProjectsSlugRoute
+  '/projects/magnus-smart-city': typeof ProjectsMagnusSmartCityRoute
+  '/projects/mirai': typeof ProjectsMiraiRoute
   '/blog/': typeof BlogIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blog/$slug' | '/projects/$slug' | '/blog/'
+  fullPaths:
+    | '/'
+    | '/legal'
+    | '/blog/$slug'
+    | '/projects/$slug'
+    | '/projects/magnus-smart-city'
+    | '/projects/mirai'
+    | '/blog/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blog/$slug' | '/projects/$slug' | '/blog'
-  id: '__root__' | '/' | '/blog/$slug' | '/projects/$slug' | '/blog/'
+  to:
+    | '/'
+    | '/legal'
+    | '/blog/$slug'
+    | '/projects/$slug'
+    | '/projects/magnus-smart-city'
+    | '/projects/mirai'
+    | '/blog'
+  id:
+    | '__root__'
+    | '/'
+    | '/legal'
+    | '/blog/$slug'
+    | '/projects/$slug'
+    | '/projects/magnus-smart-city'
+    | '/projects/mirai'
+    | '/blog/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LegalRoute: typeof LegalRoute
   BlogSlugRoute: typeof BlogSlugRoute
   ProjectsSlugRoute: typeof ProjectsSlugRoute
+  ProjectsMagnusSmartCityRoute: typeof ProjectsMagnusSmartCityRoute
+  ProjectsMiraiRoute: typeof ProjectsMiraiRoute
   BlogIndexRoute: typeof BlogIndexRoute
 }
 
@@ -76,6 +128,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal': {
+      id: '/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LegalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog/': {
@@ -99,13 +158,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/projects/magnus-smart-city': {
+      id: '/projects/magnus-smart-city'
+      path: '/projects/magnus-smart-city'
+      fullPath: '/projects/magnus-smart-city'
+      preLoaderRoute: typeof ProjectsMagnusSmartCityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/mirai': {
+      id: '/projects/mirai'
+      path: '/projects/mirai'
+      fullPath: '/projects/mirai'
+      preLoaderRoute: typeof ProjectsMiraiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LegalRoute: LegalRoute,
   BlogSlugRoute: BlogSlugRoute,
   ProjectsSlugRoute: ProjectsSlugRoute,
+  ProjectsMagnusSmartCityRoute: ProjectsMagnusSmartCityRoute,
+  ProjectsMiraiRoute: ProjectsMiraiRoute,
   BlogIndexRoute: BlogIndexRoute,
 }
 export const routeTree = rootRouteImport

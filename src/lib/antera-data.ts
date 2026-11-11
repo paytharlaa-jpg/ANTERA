@@ -69,7 +69,10 @@ export const PROJECTS = [
       { value: "550 M", label: "From Srisailam Highway" },
       { value: "Premium", label: "Clubhouse & Sports Amenities" },
     ],
-    highlights: ["Phase 1 \u2014 \u20b916,500 / Sq. Yard", "Phase 2 \u2014 \u20b915,500 / Sq. Yard"],
+    highlights: [
+      "Phase 1 \u2014 \u20b916,500 / Sq. Yard",
+      "Phase 2 \u2014 \u20b915,500 / Sq. Yard",
+    ],
     image: "/project images/Aspirealty Avatar 2.jpeg",
     cta: "Explore Avatar 2",
     brochure: ASSETS.docs.avatar2Deck,
@@ -228,8 +231,14 @@ export const INFRASTRUCTURE = [
 export const COMPARISON = {
   columns: ["Avatar 2", "Marvel Smart City", "Magnus Smart City"],
   rows: [
-    { label: "Location", values: ["Karkalpahad", "Srisailam Highway Corridor", "Shadnagar Corridor"] },
-    { label: "Type", values: ["Residential Plots", "Ultra-Luxury Villa Plots", "Premium Villa Plots"] },
+    {
+      label: "Location",
+      values: ["Karkalpahad", "Srisailam Highway Corridor", "Shadnagar Corridor"],
+    },
+    {
+      label: "Type",
+      values: ["Residential Plots", "Ultra-Luxury Villa Plots", "Premium Villa Plots"],
+    },
     { label: "Stage", values: ["Phase 1 + Phase 2", "Pre-Launch", "Project-specific"] },
     { label: "Price", values: ["\u20b915,500\u2013\u20b916,500*", "\u20b916,000*", "Enquire"] },
     { label: "Lifestyle Amenities", values: ["\u2713", "\u2713", "\u2713"] },
@@ -258,11 +267,23 @@ export const PLOT_REASONS = [
 
 export const HOW_IT_WORKS = [
   { index: "01", title: "Discover", copy: "Explore Antera's featured projects." },
-  { index: "02", title: "Consult", copy: "Discuss your requirements, budget and investment objectives." },
-  { index: "03", title: "Visit", copy: "Experience the project and surrounding location firsthand." },
+  {
+    index: "02",
+    title: "Consult",
+    copy: "Discuss your requirements, budget and investment objectives.",
+  },
+  {
+    index: "03",
+    title: "Visit",
+    copy: "Experience the project and surrounding location firsthand.",
+  },
   { index: "04", title: "Select", copy: "Choose your preferred available plot." },
   { index: "05", title: "Verify", copy: "Review relevant project and property documentation." },
-  { index: "06", title: "Proceed", copy: "Move forward with booking and applicable documentation." },
+  {
+    index: "06",
+    title: "Proceed",
+    copy: "Move forward with booking and applicable documentation.",
+  },
 ] as const;
 
 export const FAQS = [
@@ -325,4 +346,5 @@ export const GALLERY = [
 export const DISCLAIMER =
   "Project information, pricing, availability, distances, development plans and specifications displayed on this website are based on information provided by the respective project/promoter/sales materials and may be subject to change. Buyers are advised to independently verify all approvals, title documents, specifications, pricing and statutory information before making a purchase decision. Images and visualisations may be representational.";
 
-export const MAPS_URL = "https://www.google.com/maps/search/?api=1&query=Karkalpahad+Srisailam+Highway+Hyderabad";
+export const MAPS_URL =
+  "https://www.google.com/maps/search/?api=1&query=Karkalpahad+Srisailam+Highway+Hyderabad";

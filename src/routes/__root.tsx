@@ -7,10 +7,14 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { MotionConfig } from "motion/react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Preloader } from "../components/site/preloader";
+import { SmoothScroll } from "../components/site/smooth-scroll";
+import { MOTION_HEAD_SCRIPT } from "../lib/motion-pref";
 
 function NotFoundComponent() {
   return (
@@ -84,6 +88,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Antera Realty showcases premium plotted developments across Hyderabad's emerging growth corridors.",
       },
       { name: "author", content: "Antera Realty" },
+      { name: "theme-color", content: "#111a2e" },
+      { property: "og:site_name", content: "Antera Realty" },
+      { property: "og:locale", content: "en_IN" },
+      {
+        property: "og:image",
+        content: "https://anterarealty.com/projects/magnus/gate-render.webp",
+      },
       { property: "og:title", content: "Antera Realty - Shaping Spaces, Building Futures" },
       {
         property: "og:description",
@@ -108,22 +119,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     scripts: [
       {
+        children: MOTION_HEAD_SCRIPT,
+      },
+      {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "RealEstateAgent",
           name: "Antera Realty",
+          slogan: "Shaping Spaces, Building Futures",
           url: "https://anterarealty.com",
+          logo: "https://anterarealty.com/assets/antera-logo.png",
           telephone: "+919985358899",
+          email: "hello@anterarealty.com",
           address: {
             "@type": "PostalAddress",
-            streetAddress: "Opp. Mangalya Shopping Mall",
-            addressLocality: "Vanasthalipuram",
-            addressRegion: "Hyderabad",
-            addressCountry: "IN"
+            streetAddress: "Opp. Mangalya Shopping Mall, Vanasthalipuram",
+            addressLocality: "Hyderabad",
+            addressRegion: "Telangana",
+            addressCountry: "IN",
           },
-          areaServed: "Hyderabad",
-          sameAs: []
+          areaServed: ["Hyderabad", "Shadnagar", "Srisailam Highway"],
         }),
       },
     ],
@@ -136,7 +152,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
@@ -150,11 +166,19 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const [motionPref, setMotionPref] = useState<"user" | "never">("user");
+  useEffect(() => {
+    if (document.documentElement.classList.contains("motion-full")) setMotionPref("never");
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <MotionConfig reducedMotion={motionPref}>
+        <Preloader />
+        <SmoothScroll />
+        <Outlet />
+      </MotionConfig>
     </QueryClientProvider>
   );
 }
