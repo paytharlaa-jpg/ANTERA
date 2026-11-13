@@ -506,18 +506,6 @@ export const MAGNUS = {
       kind: "map",
     },
     {
-      src: "/projects/magnus/phase-2-rera-announcement.webp",
-      alt: "Magnus Phase 2 TG RERA registration announcement",
-      caption: "Phase 2 — RERA received",
-      kind: "creative",
-    },
-    {
-      src: "/projects/magnus/phase-2-lp-approval.webp",
-      alt: "Magnus Phase 2 HMDA LP approval announcement",
-      caption: "Phase 2 — LP approved",
-      kind: "creative",
-    },
-    {
       src: "/projects/magnus/price-card-2026-09-14.webp",
       alt: "Magnus Smart City Phase 1 & 2 price card, 14 Sep 2026",
       caption: "Price card — 14 Sep 2026",

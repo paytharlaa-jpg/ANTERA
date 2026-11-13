@@ -13,16 +13,16 @@ import { MAGNUS, WA_MESSAGES, formatINR, whatsappLink, type Media } from "@/lib/
 
 const phase2 = MAGNUS.phases[1];
 
-const CREATIVES: Media[] = [
+const VISUALS: Media[] = [
   {
-    src: "/projects/magnus/phase-2-lp-approval.webp",
-    alt: "Magnus Smart City Phase 2 LP approved — LP No. 2522/HMDA/SWDL/2026, 58.28 acres",
-    caption: "Phase 2 — HMDA LP approved",
+    src: "/projects/magnus/site/site-11.webp",
+    alt: "Magnus Smart City entrance arch at dusk — site photo, October 2026",
+    caption: "Entrance arch — site photo, Oct 2026",
   },
   {
-    src: "/projects/magnus/phase-2-rera-announcement.webp",
-    alt: "Magnus Smart City Phase 2 RERA received — P02400011410",
-    caption: "Phase 2 — TG RERA received",
+    src: "/projects/magnus/clubhouse/front-sunset.webp",
+    alt: "Magnus Clubhouse for Phase 2 at sunset — proposed design render",
+    caption: "Phase 2 clubhouse — proposed design render",
   },
 ];
 
@@ -33,7 +33,7 @@ export function LaunchSpotlight() {
   const yFront = useTransform(scrollYProgress, [0, 1], [120, -80]);
   const rotBack = useTransform(scrollYProgress, [0, 1], [-9, -4]);
   const rotFront = useTransform(scrollYProgress, [0, 1], [7, 3]);
-  const { open, node } = useLightbox(CREATIVES);
+  const { open, node } = useLightbox(VISUALS);
 
   const rera = phase2.approvals[0]!;
   const lp = phase2.approvals[1]!;
@@ -124,20 +124,21 @@ export function LaunchSpotlight() {
           </Reveal>
         </div>
 
-        {/* Official creatives, fanned */}
+        {/* Clubhouse render + real site photo, fanned */}
         <div className="relative mx-auto aspect-[4/5] w-full max-w-[30rem]">
           <motion.button
             type="button"
             onClick={() => open(1)}
             style={{ y: yBack, rotate: rotBack }}
             className="absolute left-0 top-0 w-[72%] overflow-hidden rounded-[1.25rem] shadow-[0_40px_80px_-40px_rgb(17_26_46/0.6)] ring-1 ring-foreground/10"
-            aria-label="View Phase 2 TG RERA announcement"
+            aria-label="View Phase 2 clubhouse render"
+            data-cursor="View"
           >
             <img
-              src={CREATIVES[1]!.src}
-              alt={CREATIVES[1]!.alt}
+              src={VISUALS[1]!.src}
+              alt={VISUALS[1]!.alt}
               loading="lazy"
-              className="w-full"
+              className="aspect-[4/5] w-full object-cover object-[50%_50%]"
             />
           </motion.button>
           <motion.button
@@ -145,17 +146,18 @@ export function LaunchSpotlight() {
             onClick={() => open(0)}
             style={{ y: yFront, rotate: rotFront }}
             className="absolute bottom-0 right-0 w-[72%] overflow-hidden rounded-[1.25rem] shadow-[0_50px_90px_-40px_rgb(17_26_46/0.7)] ring-1 ring-foreground/10"
-            aria-label="View Phase 2 HMDA LP approval announcement"
+            aria-label="View entrance arch site photo"
+            data-cursor="View"
           >
             <img
-              src={CREATIVES[0]!.src}
-              alt={CREATIVES[0]!.alt}
+              src={VISUALS[0]!.src}
+              alt={VISUALS[0]!.alt}
               loading="lazy"
-              className="w-full"
+              className="aspect-[4/5] w-full object-cover object-[68%_50%]"
             />
           </motion.button>
           <span className="absolute -bottom-10 left-0 text-[0.66rem] uppercase tracking-[0.18em] text-muted-foreground">
-            Official announcements · tap to view
+            Clubhouse render & site photo · tap to view
           </span>
         </div>
       </div>

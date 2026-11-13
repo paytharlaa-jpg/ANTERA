@@ -218,7 +218,7 @@ export function MagnusPage() {
             <SectionHeading
               eyebrow="Gallery"
               title="Magnus, in pictures and plans."
-              copy="Renders are representational. Layout plans, price cards and approval creatives are reproduced from the official project material."
+              copy="Renders are representational. Layout plans, price cards and price cards are reproduced from the official project material."
             />
             <div className="mt-12">
               <GalleryGrid items={MAGNUS.gallery as unknown as Media[]} onOpen={gallery.open} />
@@ -249,22 +249,9 @@ function PhaseBlock({
   onViewPriceCard: () => void;
 }) {
   const second = index === 2;
-  const creatives: Media[] = second
-    ? [
-        {
-          src: "/projects/magnus/phase-2-rera-announcement.webp",
-          alt: "Magnus Phase 2 TG RERA announcement",
-          caption: "Phase 2 — TG RERA received",
-        },
-        {
-          src: "/projects/magnus/phase-2-lp-approval.webp",
-          alt: "Magnus Phase 2 HMDA LP approval",
-          caption: "Phase 2 — LP approved",
-        },
-      ]
-    : phase.layout
-      ? [{ src: phase.layout.src, alt: phase.layout.alt, caption: "Phase 1 layout plan" }]
-      : [];
+  const creatives: Media[] = phase.layout
+    ? [{ src: phase.layout.src, alt: phase.layout.alt, caption: "Phase 1 layout plan" }]
+    : [];
   const lb = useLightbox(creatives);
   const wa = second ? WA_MESSAGES.magnus2 : WA_MESSAGES.magnus1;
 
@@ -335,11 +322,7 @@ function PhaseBlock({
             </Reveal>
             {phase.approvals.map((a, i) => (
               <Reveal key={a.label} delay={i * 0.08}>
-                <ApprovalCard
-                  approval={a}
-                  scope={`Magnus ${phase.label}`}
-                  onViewCreative={second ? () => lb.open(i) : undefined}
-                />
+                <ApprovalCard approval={a} scope={`Magnus ${phase.label}`} />
               </Reveal>
             ))}
             {!second && phase.layout ? (

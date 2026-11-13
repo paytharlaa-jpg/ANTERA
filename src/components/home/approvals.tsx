@@ -4,31 +4,17 @@ import { ContourBackground } from "@/components/site/contour-background";
 import { ShieldCheck } from "lucide-react";
 
 import { Reveal, SectionHeading } from "@/components/site/motion-primitives";
-import { ApprovalCard, useLightbox } from "@/components/site/project-blocks";
+import { ApprovalCard } from "@/components/site/project-blocks";
 import { TiltCard } from "@/components/site/scroll-effects";
-import { CONTACT, MAGNUS, MIRAI, type Approval, type Media } from "@/lib/projects";
-
-const CREATIVES: Media[] = [
-  {
-    src: "/projects/magnus/phase-2-rera-announcement.webp",
-    alt: "Magnus Phase 2 TG RERA announcement",
-    caption: "Magnus Phase 2 — TG RERA received",
-  },
-  {
-    src: "/projects/magnus/phase-2-lp-approval.webp",
-    alt: "Magnus Phase 2 HMDA LP approval announcement",
-    caption: "Magnus Phase 2 — LP approved",
-  },
-];
+import { CONTACT, MAGNUS, MIRAI, type Approval } from "@/lib/projects";
 
 export function ApprovalsSection() {
-  const { open, node } = useLightbox(CREATIVES);
   const [p1, p2] = MAGNUS.phases;
 
   const groups: {
     title: string;
     meta: string;
-    items: { a: Approval; creative?: number | undefined }[];
+    items: { a: Approval }[];
   }[] = [
     {
       title: "Magnus Smart City — Phase 1",
@@ -38,7 +24,7 @@ export function ApprovalsSection() {
     {
       title: "Magnus Smart City — Phase 2",
       meta: `${p2.extent} · newly approved`,
-      items: p2.approvals.map((a, i) => ({ a, creative: i })),
+      items: p2.approvals.map((a) => ({ a })),
     },
     {
       title: "Mirai by Antera Realty",
@@ -84,14 +70,10 @@ export function ApprovalsSection() {
                 <span className="text-sm text-primary-foreground/55">{g.meta}</span>
               </Reveal>
               <div className="grid gap-4 sm:grid-cols-2 lg:col-span-8">
-                {g.items.map(({ a, creative }, i) => (
+                {g.items.map(({ a }, i) => (
                   <Reveal key={a.label} delay={i * 0.08} className="h-full">
                     <TiltCard className="rounded-[1.75rem]">
-                      <ApprovalCard
-                        approval={a}
-                        tone="dark"
-                        onViewCreative={creative !== undefined ? () => open(creative) : undefined}
-                      />
+                      <ApprovalCard approval={a} tone="dark" />
                     </TiltCard>
                   </Reveal>
                 ))}
@@ -106,7 +88,6 @@ export function ApprovalsSection() {
           </p>
         </Reveal>
       </div>
-      {node}
     </section>
   );
 }
