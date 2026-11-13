@@ -27,14 +27,14 @@ function BlogIndex() {
   return (
     <main className="min-h-screen bg-[#fcfbf9]">
       <SiteNav />
-      
+
       {/* Header Section */}
       <section className="relative bg-[#0a0a0c] text-white pt-48 pb-24 px-4 md:px-8 overflow-hidden">
         {/* Background Image & Overlays */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={ASSETS.houses.modern} 
-            alt="Antera Realty Properties" 
+          <img
+            src={ASSETS.houses.modern}
+            alt="Antera Realty Properties"
             className="w-full h-full object-cover opacity-40 scale-105"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0c] via-[#0a0a0c]/80 to-transparent" />
@@ -50,7 +50,8 @@ function BlogIndex() {
             Antera <span className="text-orange-500 italic">Journal.</span>
           </h1>
           <p className="max-w-xl text-lg text-white/60 drop-shadow-sm">
-            Expert insights, buying guides, and the latest updates on Hyderabad's most promising real estate corridors.
+            Expert insights, buying guides, and the latest updates on Hyderabad's most promising
+            real estate corridors.
           </p>
         </div>
       </section>
@@ -80,20 +81,20 @@ function BlogIndex() {
                 </span>
                 <span className="text-xs font-medium text-black/40">{post.readTime}</span>
               </div>
-              
+
               <div className="flex flex-col gap-3">
                 <h2 className="font-display text-2xl font-bold leading-snug group-hover:text-orange-500 transition-colors">
                   {post.title}
                 </h2>
-                <p className="text-sm text-black/60 line-clamp-3 leading-relaxed">
-                  {post.excerpt}
-                </p>
+                <p className="text-sm text-black/60 line-clamp-3 leading-relaxed">{post.excerpt}</p>
               </div>
 
               <div className="mt-auto pt-6 border-t border-black/5 flex items-center justify-between">
                 <div className="flex flex-col">
                   <span className="text-xs font-bold">{post.author}</span>
-                  <span className="text-[10px] text-black/40 uppercase tracking-wider">{post.date}</span>
+                  <span className="text-[10px] text-black/40 uppercase tracking-wider">
+                    {post.date}
+                  </span>
                 </div>
                 <div className="h-10 w-10 rounded-full bg-black/5 flex items-center justify-center group-hover:bg-orange-500 group-hover:text-white transition-colors">
                   <ArrowUpRight className="h-4 w-4" />

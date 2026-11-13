@@ -1,6 +1,5 @@
 "use client";
 
-import { ContourBackground } from "@/components/site/contour-background";
 import {
   ArrowUpRight,
   Building2,
@@ -18,16 +17,12 @@ import {
 } from "lucide-react";
 
 import { LocationSection } from "@/components/home/location";
+import { SiteProgress } from "@/components/home/site-progress";
+import { ClubhouseFloors } from "./clubhouse-floors";
 import { WhatsAppIcon, FloatingWhatsApp } from "@/components/site/floating-whatsapp";
 import { FaqSection, type Faq } from "@/components/site/faq";
 import { FinalCta } from "@/components/site/final-cta";
-import {
-  MaskReveal,
-  ParallaxImage,
-  Reveal,
-  SectionHeading,
-  WordReveal,
-} from "@/components/site/motion-primitives";
+import { Reveal, SectionHeading, WordReveal } from "@/components/site/motion-primitives";
 import {
   ApprovalCard,
   GalleryGrid,
@@ -132,6 +127,7 @@ export function MagnusPage() {
             { id: "phase-1", label: "Phase 1" },
             { id: "phase-2", label: "Phase 2" },
             { id: "clubhouse", label: "Clubhouse" },
+            { id: "site-progress", label: "Site progress" },
             { id: "location", label: "Location" },
             { id: "gallery", label: "Gallery" },
             { id: "enquire", label: "Enquire" },
@@ -211,66 +207,9 @@ export function MagnusPage() {
         <PhaseBlock phase={p1} index={1} onViewPriceCard={() => priceCard.open(0)} />
         <PhaseBlock phase={p2} index={2} onViewPriceCard={() => priceCard.open(0)} />
 
-        {/* Clubhouse */}
-        <section
-          id="clubhouse"
-          className="relative scroll-mt-36 overflow-hidden bg-ink py-24 text-primary-foreground sm:py-32"
-        >
-          <div aria-hidden className="grain pointer-events-none absolute inset-0" />
-          <ContourBackground />
-          <div className="container-x relative grid gap-14 lg:grid-cols-12">
-            <div className="flex flex-col gap-8 lg:col-span-5">
-              <SectionHeading
-                tone="dark"
-                eyebrow="Magnus Clubhouse"
-                title="The heartbeat of your home."
-                copy="A signature clubhouse planned for the proposed 75+ acre Magnus community. Facilities as listed in the project e-brochure."
-              />
-              <ul className="grid gap-x-8 sm:grid-cols-2">
-                {MAGNUS.clubhouse.map((c, i) => (
-                  <Reveal key={c} delay={i * 0.03}>
-                    <li className="flex items-baseline gap-4 border-b border-primary-foreground/10 py-3.5 text-sm text-primary-foreground/85">
-                      <span className="font-mono text-[0.66rem] text-champagne">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {c}
-                    </li>
-                  </Reveal>
-                ))}
-              </ul>
-            </div>
-            <div className="flex flex-col gap-6 lg:col-span-7">
-              <MaskReveal className="relative aspect-[16/10] rounded-[2rem]">
-                <ParallaxImage
-                  src="/projects/magnus/clubhouse-render.webp"
-                  alt="Magnus Clubhouse, Magnus Smart City — architectural render"
-                  className="absolute inset-0"
-                  strength={8}
-                />
-                <span className="absolute bottom-4 left-4 rounded-full bg-ink/60 px-3 py-1.5 text-[0.62rem] uppercase tracking-[0.16em] backdrop-blur">
-                  Render — representational
-                </span>
-              </MaskReveal>
-              <Reveal>
-                <button
-                  type="button"
-                  onClick={() => gallery.open("/projects/magnus/amenities-collage.webp")}
-                  className="group relative block w-full overflow-hidden rounded-[2rem]"
-                >
-                  <img
-                    src="/projects/magnus/amenities-collage.webp"
-                    alt="Magnus Smart City Inner World amenities"
-                    loading="lazy"
-                    className="w-full transition-transform duration-[1.2s] group-hover:scale-[1.03]"
-                  />
-                  <span className="absolute bottom-4 left-4 rounded-full bg-ink/60 px-3 py-1.5 text-[0.62rem] uppercase tracking-[0.16em] backdrop-blur">
-                    “Inner World” amenities — from the e-brochure · tap to enlarge
-                  </span>
-                </button>
-              </Reveal>
-            </div>
-          </div>
-        </section>
+        <ClubhouseFloors />
+
+        <SiteProgress tone="light" />
 
         <LocationSection />
 

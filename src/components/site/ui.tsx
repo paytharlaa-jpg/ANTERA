@@ -20,7 +20,7 @@ const VARIANTS: Record<Variant, string> = {
 };
 
 export const BUTTON_BASE =
-  "group relative inline-flex min-h-12 items-center justify-center gap-2.5 whitespace-nowrap rounded-full px-6 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-all duration-300 ease-out active:scale-[0.98] hover:-translate-y-px";
+  "btn-magnetic group relative inline-flex min-h-12 items-center justify-center gap-2.5 whitespace-nowrap rounded-full px-6 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.16em] transition-all duration-300 ease-out active:scale-[0.98] hover:-translate-y-px";
 
 export function buttonClass(variant: Variant = "accent", className?: string) {
   return cn(BUTTON_BASE, VARIANTS[variant], className);

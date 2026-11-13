@@ -8,8 +8,9 @@ import { LaunchSpotlight } from "@/components/home/launch-spotlight";
 import { LocationSection } from "@/components/home/location";
 import { PlotStory } from "@/components/home/plot-story";
 import { ProjectsShowcase } from "@/components/home/projects-showcase";
+import { SiteProgress } from "@/components/home/site-progress";
 import { FaqSection } from "@/components/site/faq";
-import { ZoomWindow } from "@/components/site/scroll-effects";
+import { ScrollTextBand, ZoomWindow } from "@/components/site/scroll-effects";
 import { FinalCta } from "@/components/site/final-cta";
 import { FloatingWhatsApp } from "@/components/site/floating-whatsapp";
 import { SiteFooter } from "@/components/site/site-footer";
@@ -31,7 +32,7 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: URL },
       {
         property: "og:image",
-        content: "https://anterarealty.com/projects/magnus/gate-render.webp",
+        content: "https://anterarealty.com/projects/magnus/clubhouse/front-sunset.webp",
       },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -40,7 +41,7 @@ export const Route = createFileRoute("/")({
       {
         rel: "preload",
         as: "image",
-        href: "/projects/magnus/gate-render.webp",
+        href: "/projects/magnus/clubhouse/front-sunset.webp",
         fetchPriority: "high",
       },
     ],
@@ -55,31 +56,44 @@ function Index() {
       <main id="main">
         <HomeHero />
         <LaunchSpotlight />
+        <SiteProgress />
         <BrandIntro />
         <PlotStory />
         <ProjectsShowcase />
         <ZoomWindow
-          src="/projects/magnus/clubhouse-render.webp"
-          alt="Magnus Clubhouse at Magnus Smart City — architectural render"
-          caption="Magnus Clubhouse, Magnus Smart City — architectural render, representational"
+          src="/projects/magnus/clubhouse/front-sunset.webp"
+          nightSrc="/projects/magnus/clubhouse/front-night.webp"
+          alt="Magnus Clubhouse, Magnus Smart City Phase 2 — front elevation at sunset"
+          caption="Magnus Clubhouse, Phase 2 — proposed conceptual design, render"
         >
           <span className="font-mono text-[0.68rem] uppercase tracking-[0.22em] text-champagne">
-            Magnus Smart City · Lifestyle
+            Magnus Smart City · Phase 2 clubhouse
           </span>
-          <h2 className="big-title mt-4 max-w-3xl">
-            A signature clubhouse at the heart of it all.
-          </h2>
+          <h2 className="big-title mt-4 max-w-3xl">33,625 sq. ft of clubhouse, lit for life.</h2>
           <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/75 sm:text-lg">
-            Spa, swimming pool, gymnasium, mini theatre, sky lounge, co-working and more — planned
-            for the proposed 75+ acre Magnus community.
+            Pool deck and party lawn, gym and spa, mini theatre and yoga hall, guest suites,
+            co-working and a terrace bar &amp; restaurant — across four levels.
           </p>
           <a
             href="/projects/magnus-smart-city#clubhouse"
-            className="mt-8 inline-flex min-h-12 items-center rounded-full bg-champagne px-6 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink"
+            className="btn-magnetic mt-8 inline-flex min-h-12 items-center rounded-full bg-champagne px-6 font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink"
           >
-            Explore the clubhouse
+            Explore floor by floor
           </a>
         </ZoomWindow>
+        <ScrollTextBand
+          className="bg-background text-foreground"
+          words={[
+            "Pool deck",
+            "Spa",
+            "Mini theatre",
+            "Yoga hall",
+            "Sky bar",
+            "Guest suites",
+            "Co-working",
+            "Party lawn",
+          ]}
+        />
         <ApprovalsSection />
         <LocationSection />
         <GallerySection />

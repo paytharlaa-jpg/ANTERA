@@ -5,6 +5,7 @@ import { ShieldCheck } from "lucide-react";
 
 import { Reveal, SectionHeading } from "@/components/site/motion-primitives";
 import { ApprovalCard, useLightbox } from "@/components/site/project-blocks";
+import { TiltCard } from "@/components/site/scroll-effects";
 import { CONTACT, MAGNUS, MIRAI, type Approval, type Media } from "@/lib/projects";
 
 const CREATIVES: Media[] = [
@@ -85,11 +86,13 @@ export function ApprovalsSection() {
               <div className="grid gap-4 sm:grid-cols-2 lg:col-span-8">
                 {g.items.map(({ a, creative }, i) => (
                   <Reveal key={a.label} delay={i * 0.08} className="h-full">
-                    <ApprovalCard
-                      approval={a}
-                      tone="dark"
-                      onViewCreative={creative !== undefined ? () => open(creative) : undefined}
-                    />
+                    <TiltCard className="rounded-[1.75rem]">
+                      <ApprovalCard
+                        approval={a}
+                        tone="dark"
+                        onViewCreative={creative !== undefined ? () => open(creative) : undefined}
+                      />
+                    </TiltCard>
                   </Reveal>
                 ))}
               </div>
@@ -98,9 +101,8 @@ export function ApprovalsSection() {
         </div>
         <Reveal>
           <p className="mt-14 max-w-3xl text-xs leading-relaxed text-primary-foreground/45">
-            Mirai’s TG RERA registration is awaited; its HMDA status is as confirmed by the
-            promoter. Buyers should independently verify all approvals, title documents and
-            statutory information before purchase.
+            Mirai’s TG RERA registration is awaited. Buyers should independently verify all
+            approvals, title documents and statutory information before purchase.
           </p>
         </Reveal>
       </div>

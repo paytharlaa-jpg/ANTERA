@@ -33,9 +33,10 @@ const ALL: Item[] = [
 
 const FILTERS = [
   "All",
+  "Site photos",
+  "Clubhouse",
   "Magnus",
   "Mirai",
-  "Renders",
   "Layouts & maps",
   "Official creatives",
 ] as const;
@@ -57,8 +58,10 @@ export function GallerySection() {
       case "Magnus":
       case "Mirai":
         return ALL.filter((m) => m.project === filter);
-      case "Renders":
-        return ALL.filter((m) => m.kind === "render");
+      case "Site photos":
+        return ALL.filter((m) => m.kind === "photo");
+      case "Clubhouse":
+        return ALL.filter((m) => m.src.includes("/clubhouse/"));
       case "Layouts & maps":
         return ALL.filter((m) => m.kind === "plan" || m.kind === "map");
       case "Official creatives":
@@ -73,7 +76,7 @@ export function GallerySection() {
       <SectionHeading
         eyebrow="Gallery"
         title="Plans, renders and the official word."
-        copy="Renders are representational. Layout plans, price cards and approval announcements are reproduced from the promoter’s official material."
+        copy="Renders are representational. Layout plans, price cards and approval announcements are reproduced from official project material. Site photos are unedited."
       />
       <div
         role="tablist"
@@ -109,6 +112,7 @@ export function GallerySection() {
             key={`${filter}-${m.src}`}
             type="button"
             onClick={() => setIndex(i)}
+            data-cursor="View"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: Math.min(i, 6) * 0.05, ease: EASE }}

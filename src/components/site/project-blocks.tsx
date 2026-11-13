@@ -491,6 +491,7 @@ export function GalleryGrid({ items, onOpen }: { items: Media[]; onOpen: (i: num
           <button
             type="button"
             onClick={() => onOpen(i)}
+            data-cursor="View"
             className="group relative block w-full overflow-hidden rounded-[1.5rem] bg-surface text-left"
             aria-label={`Open ${m.alt}`}
           >

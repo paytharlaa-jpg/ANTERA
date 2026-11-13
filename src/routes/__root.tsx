@@ -14,6 +14,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Preloader } from "../components/site/preloader";
 import { SmoothScroll } from "../components/site/smooth-scroll";
+import { CustomCursor } from "../components/site/cursor";
 import { MOTION_HEAD_SCRIPT } from "../lib/motion-pref";
 
 function NotFoundComponent() {
@@ -93,7 +94,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:locale", content: "en_IN" },
       {
         property: "og:image",
-        content: "https://anterarealty.com/projects/magnus/gate-render.webp",
+        content: "https://anterarealty.com/projects/magnus/clubhouse/front-sunset.webp",
       },
       { property: "og:title", content: "Antera Realty - Shaping Spaces, Building Futures" },
       {
@@ -177,6 +178,7 @@ function RootComponent() {
       <MotionConfig reducedMotion={motionPref}>
         <Preloader />
         <SmoothScroll />
+        <CustomCursor />
         <Outlet />
       </MotionConfig>
     </QueryClientProvider>

@@ -13,7 +13,7 @@ import { buttonClass } from "./ui";
 export function FinalCta({
   title = "Your next opportunity starts here.",
   defaultProject,
-  image = "/projects/magnus/gate-render.webp",
+  image = "/projects/magnus/clubhouse/front-night.webp",
 }: {
   title?: string;
   defaultProject?: (typeof ENQUIRY_PROJECTS)[number] | undefined;

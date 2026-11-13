@@ -4,7 +4,7 @@ import { MiraiPage } from "@/components/projects/mirai-page";
 
 const TITLE = "Mirai — Plots near Rameshwaram, Shadnagar | Antera Realty";
 const DESCRIPTION =
-  "Mirai by Antera Realty: a 7-acre (proposed) HMDA-approved plotted community about 400 m from Rameshwaram Temple, Shadnagar. TG RERA awaited. Residential plots from ₹14,999/sq. yd. Explore the interactive digital layout.";
+  "Mirai by Antera Realty: a 6.3-acre plotted community with HMDA LP 2470/HMDA/SWDL/2026, about 400 m from Rameshwaram Temple, Shadnagar. TG RERA awaited. Residential plots from ₹14,999/sq. yd. Explore the interactive digital layout.";
 const URL = "https://anterarealty.com/projects/mirai";
 
 export const Route = createFileRoute("/projects/mirai")({

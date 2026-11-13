@@ -19,7 +19,7 @@ export const Route = createFileRoute("/projects/magnus-smart-city")({
       { property: "og:url", content: URL },
       {
         property: "og:image",
-        content: "https://anterarealty.com/projects/magnus/gate-render.webp",
+        content: "https://anterarealty.com/projects/magnus/clubhouse/front-sunset.webp",
       },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -33,7 +33,7 @@ export const Route = createFileRoute("/projects/magnus-smart-city")({
           name: "Magnus Smart City",
           description: DESCRIPTION,
           url: URL,
-          image: "https://anterarealty.com/projects/magnus/gate-render.webp",
+          image: "https://anterarealty.com/projects/magnus/clubhouse/front-sunset.webp",
           address: {
             "@type": "PostalAddress",
             addressLocality: "Rameshwaram, Shadnagar",

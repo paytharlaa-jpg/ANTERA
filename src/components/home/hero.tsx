@@ -10,27 +10,38 @@ import { useLoaderDone } from "@/lib/loader";
 
 const SLIDES = [
   {
-    src: "/projects/magnus/gate-render.webp",
-    project: "Magnus Smart City",
+    src: "/projects/magnus/clubhouse/front-sunset.webp",
+    project: "Magnus Clubhouse",
     place: "Rameshwaram · Shadnagar",
-    pos: "50% 60%",
+    label: "Proposed design — render",
+    pos: "50% 55%",
   },
   {
-    src: "/projects/magnus/clubhouse-render.webp",
-    project: "Magnus Clubhouse, Magnus",
+    src: "/projects/magnus/site/site-11.webp",
+    project: "Magnus Smart City entrance",
     place: "Rameshwaram · Shadnagar",
-    pos: "50% 55%",
+    label: "Site photo, Oct 2026",
+    pos: "50% 45%",
+  },
+  {
+    src: "/projects/magnus/clubhouse/aerial-night.webp",
+    project: "Magnus Clubhouse",
+    place: "Rameshwaram · Shadnagar",
+    label: "Proposed design — render",
+    pos: "50% 50%",
   },
   {
     src: "/projects/legacy/marvel-smart-city.webp",
     project: "Marvel Smart City",
     place: "Srisailam Highway",
+    label: "Project visual",
     pos: "50% 50%",
   },
   {
     src: "/projects/legacy/avatar-2.webp",
     project: "Aspirealty Avatar 2",
     place: "Karkalpahad",
+    label: "Project visual",
     pos: "50% 50%",
   },
 ];
@@ -160,7 +171,7 @@ export function HomeHero() {
                 <span className="mx-2 text-primary-foreground/30">/</span>
                 {slide.place}
                 <span className="mx-2 text-primary-foreground/30">/</span>
-                <span className="italic">Architectural render</span>
+                <span className="italic">{slide.label}</span>
               </motion.p>
             </AnimatePresence>
             <div className="flex max-w-md gap-2">

@@ -1,6 +1,6 @@
 "use client";
 
-import { StackCards } from "@/components/site/scroll-effects";
+import { StackCards, TiltCard } from "@/components/site/scroll-effects";
 import { ArrowUpRight, MapPin } from "lucide-react";
 
 import { Reveal, SectionHeading } from "@/components/site/motion-primitives";
@@ -44,28 +44,30 @@ export function ProjectsShowcase() {
           <div className="grid gap-6 md:grid-cols-2">
             {more.map((p, i) => (
               <Reveal key={p.id} delay={i * 0.08}>
-                <a href={p.href} className="group flex flex-col gap-5">
-                  <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-surface">
-                    <img
-                      src={p.image}
-                      alt={p.imageAlt}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
-                    />
-                    <span className="absolute left-4 top-4 rounded-full bg-background/85 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] backdrop-blur">
-                      {p.status}
-                    </span>
-                  </div>
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex flex-col gap-1.5">
-                      <span className="font-display text-2xl">{p.name}</span>
-                      <span className="text-sm text-muted-foreground">{p.blurb}</span>
+                <TiltCard className="rounded-[1.75rem]">
+                  <a href={p.href} data-cursor="Explore" className="group flex flex-col gap-5">
+                    <div className="relative aspect-[16/10] overflow-hidden rounded-[1.75rem] bg-surface">
+                      <img
+                        src={p.image}
+                        alt={p.imageAlt}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+                      />
+                      <span className="absolute left-4 top-4 rounded-full bg-background/85 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] backdrop-blur">
+                        {p.status}
+                      </span>
                     </div>
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-foreground/15 transition-all duration-500 group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
-                      <ArrowUpRight className="h-4 w-4" />
-                    </span>
-                  </div>
-                </a>
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex flex-col gap-1.5">
+                        <span className="font-display text-2xl">{p.name}</span>
+                        <span className="text-sm text-muted-foreground">{p.blurb}</span>
+                      </div>
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-foreground/15 transition-all duration-500 group-hover:border-foreground group-hover:bg-foreground group-hover:text-background">
+                        <ArrowUpRight className="h-4 w-4" />
+                      </span>
+                    </div>
+                  </a>
+                </TiltCard>
               </Reveal>
             ))}
           </div>
@@ -81,6 +83,7 @@ function FeatureRow({ p, index }: { p: PortfolioItem; index: number }) {
     <Reveal>
       <a
         href={p.href}
+        data-cursor="Explore"
         className="group grid overflow-hidden rounded-[2rem] border border-foreground/10 bg-card transition-[border-color,box-shadow] duration-500 hover:border-foreground/20 hover:shadow-[0_40px_90px_-50px_rgb(17_26_46/0.5)] lg:grid-cols-12"
       >
         <div

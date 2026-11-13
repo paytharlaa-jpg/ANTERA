@@ -135,7 +135,7 @@ export function PlotStory() {
         <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden />
         {failed ? (
           <img
-            src="/projects/magnus/gate-render.webp"
+            src="/projects/magnus/clubhouse/front-night.webp"
             alt=""
             className="absolute inset-0 h-full w-full object-cover opacity-40"
           />

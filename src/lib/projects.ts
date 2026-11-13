@@ -62,6 +62,201 @@ export const LOGOS = {
 export const formatINR = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 /* ------------------------------------------------------------------ */
+/* MAGNUS — real site photographs & final clubhouse design            */
+/* ------------------------------------------------------------------ */
+
+const SITE = (n: number, caption: string, alt: string): Media => ({
+  src: `/projects/magnus/site/site-${String(n).padStart(2, "0")}.webp`,
+  alt: `Magnus Smart City site, October 2026 — ${alt}`,
+  caption,
+  kind: "photo",
+});
+
+/** Real photographs from the Magnus Smart City site, taken 28 Oct 2026. */
+export const SITE_PHOTOS: Media[] = [
+  SITE(11, "Entrance arch at dusk", "entrance arch at dusk"),
+  SITE(1, "Landscaped avenue & CC roads", "landscaped median and internal roads"),
+  SITE(4, "Main road with corten pergola", "main road with corten-steel pergola"),
+  SITE(9, "Entrance arch — wide view", "entrance arch, wide view"),
+  SITE(2, "Corten-steel pergola", "corten-steel pergola beside the road"),
+  SITE(10, "Paver walkway along CC road", "paver-block walkway along the road"),
+  SITE(3, "Avenue plantation & power infrastructure", "avenue plantation and electrical panels"),
+  SITE(8, "Entrance arch installation", "entrance arch being installed"),
+  SITE(7, "Corten pergola — side view", "corten pergola side view"),
+  SITE(5, "Entrance arch — under construction", "entrance arch under construction"),
+  SITE(6, "Arch frame being erected", "arch frame being erected"),
+];
+
+const CH = "/projects/magnus/clubhouse";
+
+/** Final clubhouse drawings — "Proposed conceptual views of clubhouse", Magnus Smart City Phase II. */
+export const CLUBHOUSE = {
+  title: "Magnus Clubhouse",
+  phase: "Phase 2",
+  status: "Proposed conceptual design",
+  totalArea: 33625,
+  levels: [
+    {
+      id: "ground",
+      name: "Ground floor",
+      area: "5,422.5 sq. ft",
+      items: ["Lounge", "Gym", "Clinic", "Pharmacy", "4 convenience shops"],
+      outdoor: [
+        "Swimming pool with wooden deck",
+        "Party lawn & walkway",
+        "Entrance plaza",
+        "Landscaped gardens",
+        "Car parking",
+      ],
+      image: `${CH}/aerial-day.webp`,
+      plan: `${CH}/plan-ground.webp`,
+    },
+    {
+      id: "first",
+      name: "First floor",
+      area: "9,400.89 sq. ft",
+      items: [
+        "Mini theatre",
+        "Multi-purpose hall",
+        "Yoga hall",
+        "Table tennis",
+        "Chess & carroms",
+        "Billiards / air hockey",
+      ],
+      outdoor: [],
+      image: `${CH}/front-day.webp`,
+      plan: `${CH}/plan-first.webp`,
+    },
+    {
+      id: "second",
+      name: "Second floor",
+      area: "9,400.89 sq. ft",
+      items: ["Massage & spa", "VIP lounge", "7 guest rooms", "Suite room"],
+      outdoor: [],
+      image: `${CH}/corner-day.webp`,
+      plan: `${CH}/plan-second.webp`,
+    },
+    {
+      id: "terrace",
+      name: "Terrace",
+      area: "9,400.89 sq. ft",
+      items: ["Bar & restaurant", "VIP lounge", "Co-working space", "Kitchen"],
+      outdoor: [],
+      image: `${CH}/aerial-night.webp`,
+      plan: `${CH}/plan-terrace.webp`,
+    },
+  ],
+  views: [
+    {
+      src: `${CH}/front-sunset.webp`,
+      alt: "Magnus Clubhouse front elevation at sunset",
+      caption: "Front elevation — sunset",
+      kind: "render",
+    },
+    {
+      src: `${CH}/front-night.webp`,
+      alt: "Magnus Clubhouse front elevation at night",
+      caption: "Front elevation — night",
+      kind: "render",
+    },
+    {
+      src: `${CH}/front-day.webp`,
+      alt: "Magnus Clubhouse front elevation",
+      caption: "Front elevation — day",
+      kind: "render",
+    },
+    {
+      src: `${CH}/aerial-day.webp`,
+      alt: "Magnus Clubhouse aerial view",
+      caption: "Aerial view — day",
+      kind: "render",
+    },
+    {
+      src: `${CH}/aerial-night.webp`,
+      alt: "Magnus Clubhouse aerial view at night",
+      caption: "Aerial view — night",
+      kind: "render",
+    },
+    {
+      src: `${CH}/corner-day.webp`,
+      alt: "Magnus Clubhouse isometric view",
+      caption: "Isometric view",
+      kind: "render",
+    },
+    {
+      src: `${CH}/corner-night.webp`,
+      alt: "Magnus Clubhouse isometric view at night",
+      caption: "Isometric view — night",
+      kind: "render",
+    },
+  ] satisfies Media[],
+  alternates: [
+    {
+      src: `${CH}/option2-front-day.webp`,
+      alt: "Magnus Clubhouse design option 2, front elevation",
+      caption: "Design option 2 — elevation",
+      kind: "render",
+    },
+    {
+      src: `${CH}/option2-front-night.webp`,
+      alt: "Magnus Clubhouse design option 2 at night",
+      caption: "Design option 2 — night",
+      kind: "render",
+    },
+    {
+      src: `${CH}/option2-aerial.webp`,
+      alt: "Magnus Clubhouse design option 2, aerial view",
+      caption: "Design option 2 — aerial",
+      kind: "render",
+    },
+    {
+      src: `${CH}/option2-north-night.webp`,
+      alt: "Magnus Clubhouse design option 2, north elevation at night",
+      caption: "Design option 2 — north elevation",
+      kind: "render",
+    },
+    {
+      src: `${CH}/option3-front-day.webp`,
+      alt: "Magnus Clubhouse design option 3, front elevation",
+      caption: "Design option 3 — elevation",
+      kind: "render",
+    },
+    {
+      src: `${CH}/option3-front-night.webp`,
+      alt: "Magnus Clubhouse design option 3 at night",
+      caption: "Design option 3 — night",
+      kind: "render",
+    },
+  ] satisfies Media[],
+  plans: [
+    {
+      src: `${CH}/plan-ground.webp`,
+      alt: "Magnus Clubhouse ground floor plan",
+      caption: "Ground floor plan",
+      kind: "plan",
+    },
+    {
+      src: `${CH}/plan-first.webp`,
+      alt: "Magnus Clubhouse first floor plan",
+      caption: "First floor plan",
+      kind: "plan",
+    },
+    {
+      src: `${CH}/plan-second.webp`,
+      alt: "Magnus Clubhouse second floor plan",
+      caption: "Second floor plan",
+      kind: "plan",
+    },
+    {
+      src: `${CH}/plan-terrace.webp`,
+      alt: "Magnus Clubhouse terrace floor plan",
+      caption: "Terrace floor plan",
+      kind: "plan",
+    },
+  ] satisfies Media[],
+} as const;
+
+/* ------------------------------------------------------------------ */
 /* MAGNUS SMART CITY                                                   */
 /* ------------------------------------------------------------------ */
 
@@ -95,8 +290,8 @@ export const MAGNUS = {
   type: "Premium villa plots",
   logo: LOGOS.magnus,
   hero: {
-    src: "/projects/magnus/gate-render.webp",
-    alt: "Magnus Smart City entrance arch — architectural render",
+    src: "/projects/magnus/clubhouse/front-sunset.webp",
+    alt: "Magnus Clubhouse at sunset — proposed conceptual design",
   },
   brochure: "/assets/Magnus_SmartCity_E-Brochure.pdf",
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=Rameshwaram+Temple+Shadnagar+Telangana",
@@ -214,18 +409,18 @@ export const MAGNUS = {
     "Modern street lights",
   ],
   clubhouse: [
-    "Spa",
-    "Mini Theater",
-    "Guest Rooms",
-    "Swimming Pool",
-    "Clinic & Pharmacy",
-    "Indoor Sports Zone",
-    "Gymnasium",
-    "Multipurpose Hall for Events",
-    "Wellness & Meditation Center",
-    "Sky Lounge & Rooftop Restaurant",
-    "Business Center & Co-working Spaces",
-    "Commercial Space (Shops / Convenience Stores)",
+    "Swimming pool with wooden deck",
+    "Gym",
+    "Spa & massage",
+    "Mini theatre",
+    "Multi-purpose hall",
+    "Yoga hall",
+    "Indoor games — table tennis, billiards, chess & carroms",
+    "Guest rooms & suite",
+    "VIP lounges",
+    "Co-working space",
+    "Terrace bar & restaurant",
+    "Clinic, pharmacy & convenience shops",
   ],
   connectivity: [
     {
@@ -273,16 +468,23 @@ export const MAGNUS = {
     },
   ],
   gallery: [
+    ...SITE_PHOTOS.slice(0, 6),
     {
-      src: "/projects/magnus/gate-render.webp",
-      alt: "Magnus Smart City entrance arch",
-      caption: "Entrance arch — render",
+      src: "/projects/magnus/clubhouse/front-sunset.webp",
+      alt: "Magnus Clubhouse front elevation at sunset",
+      caption: "Clubhouse — front elevation, sunset",
       kind: "render",
     },
     {
-      src: "/projects/magnus/clubhouse-render.webp",
-      alt: "Magnus Clubhouse at Magnus Smart City",
-      caption: "Magnus Clubhouse — render",
+      src: "/projects/magnus/clubhouse/aerial-day.webp",
+      alt: "Magnus Clubhouse aerial view",
+      caption: "Clubhouse — aerial view",
+      kind: "render",
+    },
+    {
+      src: "/projects/magnus/clubhouse/corner-night.webp",
+      alt: "Magnus Clubhouse isometric night view",
+      caption: "Clubhouse — night view",
       kind: "render",
     },
     {
@@ -335,7 +537,7 @@ export const MIRAI = {
   tagline: "Rooted in Faith. Built for Life.",
   location: "Near Rameshwaram, Shadnagar, Telangana",
   shortLocation: "Rameshwaram · Shadnagar",
-  extent: "7 acres (proposed)",
+  extent: "6.3 acres",
   type: "Premium residential plots",
   logo: LOGOS.mirai,
   digitalLayoutUrl: "https://magnus2-dl.fly.dev/mirai-dl",
@@ -345,10 +547,11 @@ export const MIRAI = {
   approvals: [
     {
       authority: "HMDA",
-      label: "HMDA Layout",
+      label: "HMDA Layout Permission (LP)",
       status: "approved",
-      detail: "HMDA approved — LP number to be published",
-      source: "Client confirmation (Nov 2026)",
+      number: "2470/HMDA/SWDL/2026",
+      detail: "6.3 acres — HMDA LP received",
+      source: "Official Mirai HMDA LP announcement (Nov 2026)",
     },
     {
       authority: "TG RERA",
@@ -450,8 +653,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     location: MAGNUS.shortLocation,
     status: "Open for booking",
     priceFrom: `${formatINR(16999)} / sq. yd.`,
-    image: "/projects/magnus/clubhouse-render.webp",
-    imageAlt: "Magnus Clubhouse render, Magnus Smart City",
+    image: "/projects/magnus/site/site-01.webp",
+    imageAlt: "Magnus Smart City site — landscaped avenue and CC roads",
     blurb: "16.31 acres · 215 Vastu-compliant villa plots · residential & commercial blocks.",
     badges: ["TG RERA P02400010251", "HMDA LP 0546/HMDA/SWDL/2025"],
     featured: true,
@@ -465,9 +668,9 @@ export const PORTFOLIO: PortfolioItem[] = [
     location: MAGNUS.shortLocation,
     status: "Newly launched",
     priceFrom: `${formatINR(16999)} / sq. yd.`,
-    image: "/projects/magnus/gate-render.webp",
-    imageAlt: "Magnus Smart City entrance arch render",
-    blurb: "58.28 acres beside Phase 1 · RERA registration and HMDA LP received.",
+    image: "/projects/magnus/clubhouse/front-sunset.webp",
+    imageAlt: "Magnus Clubhouse at sunset — proposed design",
+    blurb: "58.28 acres beside Phase 1 · RERA & HMDA LP received · new 33,625 sq. ft clubhouse.",
     badges: ["TG RERA P02400011410", "HMDA LP 2522/HMDA/SWDL/2026"],
     featured: true,
     accent: "magnus",
@@ -478,12 +681,12 @@ export const PORTFOLIO: PortfolioItem[] = [
     developer: "Antera Realty",
     href: "/projects/mirai",
     location: MIRAI.shortLocation,
-    status: "HMDA approved · RERA awaited",
+    status: "HMDA LP received · RERA awaited",
     priceFrom: `${formatINR(14999)} / sq. yd.`,
     image: "/projects/mirai/layout-plan.webp",
     imageAlt: "Mirai layout plan",
-    blurb: "7 acres (proposed) · 400 m from Rameshwaram Temple · Vastu-based layout.",
-    badges: ["HMDA approved", "TG RERA awaited"],
+    blurb: "6.3 acres · 400 m from Rameshwaram Temple · Vastu-based layout.",
+    badges: ["HMDA LP 2470/HMDA/SWDL/2026", "TG RERA awaited"],
     featured: true,
     accent: "mirai",
   },

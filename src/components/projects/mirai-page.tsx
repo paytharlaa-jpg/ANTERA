@@ -37,7 +37,7 @@ const FEATURE_ICONS: LucideIcon[] = [Compass, RouteIcon, Baby, Droplets, Bike, U
 const FAQS: Faq[] = [
   {
     q: "Is Mirai RERA approved?",
-    a: "Not yet. Mirai is HMDA approved as confirmed by the promoter, and its TG RERA registration is awaited. We will publish the registration number here once issued.",
+    a: "Not yet. Mirai has received its HMDA layout permission (LP No. 2470/HMDA/SWDL/2026); its TG RERA registration is awaited. We will publish the registration number here once issued.",
   },
   {
     q: "What is the price of plots at Mirai?",
@@ -71,7 +71,7 @@ export function MiraiPage() {
           eyebrow={
             <span className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-2 rounded-full bg-emerald-400/15 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-emerald-200">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> HMDA approved
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" /> HMDA LP received
               </span>
               <span className="inline-flex items-center gap-2 rounded-full bg-amber-400/15 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-amber-200">
                 <span className="h-1.5 w-1.5 rounded-full bg-amber-400" /> TG RERA awaited
@@ -79,7 +79,7 @@ export function MiraiPage() {
             </span>
           }
           title="Rooted in faith. Built for life."
-          lede="An intimate 7-acre (proposed) plotted community by Antera Realty, about 400 m from the Rameshwaram temple near Shadnagar — on a 60 ft government road, inside the proposed RRR zone."
+          lede="An intimate 6.3-acre HMDA-approved plotted community by Antera Realty, about 400 m from the Rameshwaram temple near Shadnagar — on a 60 ft government road, inside the proposed RRR zone."
           breadcrumb={[
             { label: "Home", href: "/" },
             { label: "Projects", href: "/#projects" },
@@ -88,7 +88,7 @@ export function MiraiPage() {
           aside={
             <FactStrip
               facts={[
-                { value: "7 acres", label: "Proposed extent" },
+                { value: "6.3 acres", label: "HMDA-approved extent" },
                 { value: formatINR(14999), label: "Residential / sq. yd." },
                 { value: "~400 m", label: "To Rameshwaram Temple" },
                 { value: "60 ft", label: "Govt road frontage" },
@@ -227,7 +227,7 @@ export function MiraiPage() {
               <SectionHeading
                 eyebrow="Approval status"
                 title="Clear about where things stand."
-                copy="Mirai is HMDA approved as confirmed by the promoter. Its TG RERA registration has not yet been issued — we will publish the number here as soon as it is."
+                copy="Mirai has received HMDA layout permission LP No. 2470/HMDA/SWDL/2026 for 6.3 acres. Its TG RERA registration has not yet been issued — we will publish the number here as soon as it is."
               />
             </div>
             <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">

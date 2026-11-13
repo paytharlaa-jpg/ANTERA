@@ -66,13 +66,13 @@ export function BrandIntro() {
         <div className="mt-16 grid gap-6 lg:mt-24 lg:grid-cols-12">
           <MaskReveal className="relative aspect-[4/3] rounded-[2rem] lg:col-span-7 lg:aspect-auto lg:min-h-[34rem]">
             <ParallaxImage
-              src="/projects/magnus/clubhouse-render.webp"
-              alt="Magnus Clubhouse at Magnus Smart City — architectural render"
+              src="/projects/magnus/clubhouse/corner-day.webp"
+              alt="Magnus Clubhouse, Magnus Smart City — proposed design render"
               className="absolute inset-0"
               strength={8}
             />
             <span className="absolute bottom-5 left-5 rounded-full bg-ink/55 px-3 py-1.5 text-[0.66rem] uppercase tracking-[0.16em] text-primary-foreground backdrop-blur">
-              Magnus Clubhouse · Magnus — render
+              Magnus Clubhouse — proposed design
             </span>
           </MaskReveal>
 
