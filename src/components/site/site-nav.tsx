@@ -11,7 +11,7 @@ import { EASE } from "./motion-primitives";
 
 const LINKS = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
   { label: "Projects", href: "/#projects", menu: true },
   { label: "Location", href: "/#location" },
   { label: "Gallery", href: "/#gallery" },

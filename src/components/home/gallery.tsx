@@ -10,7 +10,7 @@ import { HorizontalScroll } from "@/components/site/scroll-effects";
 import { MAGNUS, MIRAI, type Media } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 
-type Item = Media & { project: "Magnus" | "Mirai" | "Avatar 2" | "Marvel" };
+type Item = Media & { project: "Magnus" | "Mirai" | "Marvel" };
 
 const ALL: Item[] = [
   ...MAGNUS.gallery.map((m) => ({ ...m, project: "Magnus" as const })),
@@ -21,13 +21,6 @@ const ALL: Item[] = [
     caption: "Marvel Smart City — visual",
     kind: "render",
     project: "Marvel",
-  },
-  {
-    src: "/projects/legacy/avatar-2.webp",
-    alt: "Aspirealty Avatar 2 entrance visual",
-    caption: "Avatar 2 — entrance visual",
-    kind: "render",
-    project: "Avatar 2",
   },
 ];
 

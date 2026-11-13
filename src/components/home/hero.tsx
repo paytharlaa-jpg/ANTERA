@@ -38,11 +38,11 @@ const SLIDES = [
     pos: "50% 50%",
   },
   {
-    src: "/projects/legacy/avatar-2.webp",
-    project: "Aspirealty Avatar 2",
-    place: "Karkalpahad",
-    label: "Project visual",
-    pos: "50% 50%",
+    src: "/projects/magnus/clubhouse/corner-night.webp",
+    project: "Magnus Clubhouse",
+    place: "Rameshwaram · Shadnagar",
+    label: "Proposed design — render",
+    pos: "50% 55%",
   },
 ];
 

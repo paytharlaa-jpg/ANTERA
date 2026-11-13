@@ -10,7 +10,7 @@ import { Reveal } from "./motion-primitives";
 import { WhatsAppIcon } from "./floating-whatsapp";
 
 const COMPANY = [
-  { label: "About Antera", href: "/#about" },
+  { label: "About Antera", href: "/about" },
   { label: "Approvals", href: "/#approvals" },
   { label: "Location", href: "/#location" },
   { label: "Gallery", href: "/#gallery" },

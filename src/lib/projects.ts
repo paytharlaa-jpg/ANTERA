@@ -53,6 +53,35 @@ export const CONTACT = {
   reraPortal: "https://rera.telangana.gov.in",
 } as const;
 
+export type Founder = {
+  name: string;
+  role: string;
+  phoneDisplay: string;
+  phoneRaw: string;
+  whatsapp: string;
+  photo: string;
+};
+
+/** Leadership — names, roles, photos and numbers as published on the existing site. */
+export const FOUNDERS: Founder[] = [
+  {
+    name: "Nagunuri Raju",
+    role: "Founder",
+    phoneDisplay: "+91 95607 76917",
+    phoneRaw: "+919560776917",
+    whatsapp: "919560776917",
+    photo: "/team/founder.png",
+  },
+  {
+    name: "Vamshi Krishna",
+    role: "Co-founder",
+    phoneDisplay: "+91 96187 82108",
+    phoneRaw: "+919618782108",
+    whatsapp: "919618782108",
+    photo: "/team/cofounder.jpg",
+  },
+];
+
 export const LOGOS = {
   antera: "/assets/antera-logo.png",
   magnus: "/projects/magnus/magnus-logo.png",
@@ -685,8 +714,8 @@ export const PORTFOLIO: PortfolioItem[] = [
     location: "Karkalpahad · Srisailam Highway",
     status: "Phase 1 + Phase 2",
     priceFrom: "₹15,500 / sq. yd.",
-    image: "/projects/legacy/avatar-2.webp",
-    imageAlt: "Aspirealty Avatar 2 project visual",
+    image: "/projects/legacy/avatar-2-plan.webp",
+    imageAlt: "Avatar 2 master plan — clubhouse, park and plots",
     blurb: "8 acres approved, 17 acres proposed · clubhouse and sports amenities.",
     badges: ["550 m from Srisailam Highway"],
     featured: false,

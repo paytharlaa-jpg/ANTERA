@@ -1,5 +1,6 @@
 "use client";
 
+import { FounderCards } from "@/components/site/founder-cards";
 import { ScrollFillText } from "@/components/site/scroll-effects";
 import {
   CountUp,
@@ -84,6 +85,34 @@ export function BrandIntro() {
                 <p className="text-sm leading-relaxed text-muted-foreground">{p.copy}</p>
               </Reveal>
             ))}
+          </div>
+        </div>
+
+        <div className="mt-20 grid gap-10 lg:mt-28 lg:grid-cols-12 lg:items-end">
+          <div className="flex flex-col gap-5 lg:col-span-4">
+            <Reveal>
+              <span className="eyebrow inline-flex items-center gap-3 text-champagne-deep">
+                <span aria-hidden className="h-px w-8 bg-current opacity-70" />
+                Leadership
+              </span>
+            </Reveal>
+            <WordReveal text="The people behind Antera." className="section-title text-balance" />
+            <Reveal delay={0.1}>
+              <p className="text-base leading-relaxed text-muted-foreground">
+                Speak directly with the founders — about a project, a plot, or your next site visit.
+              </p>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <a
+                href="/about"
+                className="btn-magnetic inline-flex min-h-11 items-center gap-2 self-start rounded-full border border-foreground/15 px-5 font-mono text-[0.68rem] uppercase tracking-[0.16em] hover:border-foreground/40"
+              >
+                More about Antera →
+              </a>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-8">
+            <FounderCards />
           </div>
         </div>
 
